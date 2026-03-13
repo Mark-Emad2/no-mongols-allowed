@@ -1,16 +1,37 @@
 <html>
     <head>
-        <title>
-            borrowed books
-        </title>
+        <title>borrowed books</title>
+        <link rel="stylesheet" href="main.css">
     </head>
 
     <body>
-        <div>
-            <a href="No Mongols Allowed.html">
-                <img src="Picture/Untitled design.png" alt="logo" width="300" height="80">
+
+    <div class="nav">
+
+        <div class="logo">
+            <a href="main.html">
+                <img src="Picture/Untitled design.png" alt="logo">
             </a>
         </div>
+
+        <div class="search">
+            <form action="" method="GET">
+                <label for="search_box">Search: </label>
+                <input id="search_box" type="search" name="search" placeholder="Title, author, category...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="links">
+            <ul>
+                <li><a href="add.html">Add | Edit book </a></li>
+                <li><a href="available_books_user.html">Browse Books</a></li>
+<!--                <li><a href="borrowed%20books.html">My Borrowed Books</a></li>-->
+                <li><a href="CleanCode_details.html">Admin Dashboard</a></li>
+                <li> <a href="Login2.html">Log out</a></li>
+            </ul>
+        </div>
+    </div>
        <h1 style="font-size: 40px;text-align: center;" >borrowed books</h1> 
 
        <hr>
