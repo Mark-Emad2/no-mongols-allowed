@@ -72,8 +72,7 @@ h2
 form { display: flex; flex-direction: column; gap: 15px; }
 
 .checkbox a {
-    color: #111;         /* Darker color for the link */
-    /*font-weight: bold;*/
+    color: #111;
     text-decoration: underline;
 }
 
