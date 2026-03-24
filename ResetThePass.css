@@ -1,0 +1,110 @@
+
+body {
+
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #101c1d 0%, #1a2a2b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.container {
+    background-color: white;
+    width: 400px;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: flex;
+    position: relative;
+
+}
+.container::selection
+{
+    background-color: #fed7aa;
+}
+.container .image{
+    width: 50%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    z-index: -1000;
+
+}
+.container .image img{
+    width: 100%;
+border-radius: 25px;
+}
+
+.container .text
+{
+    width: 100%;
+
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-family: 'Dancing Script', cursive;
+}
+
+p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+}
+
+input[type="email"]:focus {
+    border-color: #0d3235;
+}
+
+button {
+    background-color: #111;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+}
+button:hover {
+    background-color: #1a4a4e;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    color: #0f3d40;
+    text-decoration: none;
+    font-size: 14px;
+    /*transition: all 0.3s ease-in;*/
+
+}
+
+
+
+
+

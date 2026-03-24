@@ -30,6 +30,10 @@ h2
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
+.container::selection
+{
+    background-color: #fed7aa;
+}
 .container .image
 {
     /*width: 40%;*/
@@ -78,6 +82,7 @@ input[type="password"] {
     right: 2%;
     text-decoration: none;
     color: #111111;
+    margin: -2px  ;
 }
 #fyourpass:hover
 {
