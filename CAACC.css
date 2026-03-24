@@ -1,0 +1,111 @@
+body
+{
+    background: linear-gradient(135deg, #0f3d40 0%, #0a1112 100%);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+
+}
+h2
+{
+    /*margin-top:0 ;*/
+    margin: 0 auto 30px auto;
+    font-size: 34px;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+}
+.container
+{
+    background-color: white;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    width: 800px;
+    max-width: 90%;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.container .image
+{
+    /*width: 40%;*/
+    /*background-size: cover;*/
+    flex: 1;
+    line-height: 0;
+   position: relative;
+    overflow: hidden;
+}
+
+.container .image h3
+{
+    font-size:30px;
+    font-family:'Dancing Script', cursive ;
+    color: #ffffff;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    transform: translateY(-50%);
+}
+
+
+.container .image img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+.container .text
+{
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+form { display: flex; flex-direction: column; gap: 15px; }
+
+.checkbox a {
+    color: #111;         /* Darker color for the link */
+    /*font-weight: bold;*/
+    text-decoration: underline;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+button {
+    background-color: #111;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+button a { color: white; text-decoration: none; }
+
+.signin a
+{
+    color: #111;
+    text-decoration: none;
+}
+.signin a:hover
+{
+    text-decoration: underline;
+}
+
+
+
