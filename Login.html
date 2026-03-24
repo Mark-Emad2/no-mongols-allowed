@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<h2>A~Z Library</h2>
-<p>You can log in to ur Account any time ^*^</p>
+<div class="container">
+    <h2>Ebn Sina</h2>
+    <p>You can log in to your account any time</p>
 
-<form action="main.html" method="post">
-<div class="userName">
-    <input type="text" placeholder="Email">
-</div>
-<br/>
-<div class="password">
-    <input type="password" placeholder="Password">
-</div>
-<br/>
-<a href="#">Forgot Your Password?</a>
-<button type="submit">Log in</button>
+    <form action="main.html" method="post">
+        <div>
+            <input type="email" placeholder="Email" required>
+        </div>
+        <div>
+            <input type="password" placeholder="Password" required>
+        </div>
 
-<h4>Don't have an account?</h4>
-<button><a href="CreateAnAccount.html">Create</a>.</button>
-</form>
+        <div>
+            <a href="#" class="link-light" id="FURP">Forgot Your Password?</a>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Log in</button>
+
+        <div>
+            <h4>Don't have an account?</h4>
+            <a href="CreateAnAccount.html" class="btn btn-outline">Create</a>
+        </div>
+    </form>
+</div>
 </body>
 </html>
