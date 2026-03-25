@@ -1,7 +1,13 @@
 body
 {
-    background: linear-gradient(135deg, #0f3d40 0%, #0a1112 100%);
+    /*background: linear-gradient(135deg, #0f3d40 0%, #0a1112 100%);*/
     min-height: 100vh;
+    /*background: linear-gradient(255deg, #1D6152 0%, #298d76 50%, #248f78 100%);*/
+    background: linear-gradient(255deg, #F1EBDD 0%, #b4aea6 50%, #868480 100%);
+    /*background: linear-gradient(255deg, #dc8052 0%, #f68a5a 50%, #cc6027 100%);*/
+    /*background: linear-gradient(255deg, #595588 0%, #423e65 50%, #2f2e48 100%);*/
+
+    /*background-color: #595588;*/
     margin: 0;
     display: flex;
     align-items: center;

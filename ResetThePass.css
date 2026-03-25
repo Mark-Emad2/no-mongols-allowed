@@ -3,7 +3,8 @@ body {
 
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #101c1d 0%, #1a2a2b 100%);
+    /*background: linear-gradient(135deg, #101c1d 0%, #1a2a2b 100%);*/
+    background: linear-gradient(255deg, #868480 0%, #b4aea6 50%, #F1EBDD 100%);
     display: flex;
     align-items: center;
     justify-content: center;
