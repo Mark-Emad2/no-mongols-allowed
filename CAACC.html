@@ -11,7 +11,7 @@
 <div class="container">
 
     <div class="image">
-        <img src="Picture/loginboks.jpg"></img>
+        <img src="Picture/loginboks.jpg" alt="Stack of library books"></img>
         <h3>Create Your Account</h3>
 
     </div>
@@ -19,11 +19,16 @@
     <div class="text">
         <h2> Sign Up</h2>
 
-        <form action="Login.html">
+        <form id="signupForm" action="Login.html" method="POST">
             <input type="text" required placeholder="First Name" name="firstName">
             <input type="text" required placeholder="Last Name" name="lastName">
             <input type="email" required placeholder="Email" name="email">
-            <input type="password" required placeholder="Password" minlength="8" name="password" >
+
+            <input type="password" id="password" required placeholder="Password" minlength="8" name="password">
+
+            <input type="password" id="confirmPassword" required placeholder="Confirm Password">
+
+            <p id="message"></p> <!-- for JS Message -->
 
             <div class="checkbox">
                 <input type="checkbox" id="TOS" name="TOS" required>
