@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #FAF3E0;
+}
+
+.navbar {
+    background-color: #361E15;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+.search-input {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    width: 280px;
+    font-size: 0.9rem;
+}
+
+.main-body{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 50px;
+}
+.image-section{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+    gap: 10px;
+    align-items: center;
+    
+}
+.btn-borrow{
+    
+    text-decoration: none;
+    background-color: #B85C38;
+    padding: 12px 35px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s;
+    margin-top: auto;
+    /* align-self: center; */
+    width:auto;
+    /* margin: 5px 0px; */
+}
+.btn-buy{
+    
+    text-decoration: none;
+    background-color: #B85C38;
+    padding: 12px 35px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s;
+    margin-top: auto;
+    /* align-self: center; */
+    width:auto;
+    /* margin: 5px 0px; */
+}
+.btn-buy:hover {
+    background-color: #2D2424;
+    transform: scale(1.02);
+}
+.btn-borrow:hover {
+    background-color: #2D2424;
+    transform: scale(1.02);
+}
+
+.Stars input{
+    display: none;
+}
+.Stars label{
+    font-size: 30px;
+    padding: 0 2px;
+    color :#ccc;
+    /* border: orange; */
+    cursor: pointer;
+    transition: color 0.2s;
+    margin: 5px 0px;
+}
+.Stars label:hover ~ label{
+    color: orange;
+}
+.Stars input:hover ~ label{
+    color: orange;
+}
+.Stars input:checked ~ label{
+    color: orange;
+}
+
+
+.Stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    /* position: relative;
+    left : 90px ; */
+}
+.sent-rate{
+    margin: -5px 0px;
+    display: flex;
+    align-items: center;
+    color: #361E15;
+    
+    /* position: relative;
+    left : 103px ; */
+}
+
+.book-cover {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 15px;
+    
+}
+
+
+
+.right-section-of-body{
+    padding: 30px;
+}
