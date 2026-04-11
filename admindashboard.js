@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // =========================
-// 📦 DATA
+//  DATA
 // =========================
 let storedBooks = localStorage.getItem("books");
 
@@ -60,7 +60,7 @@ if (storedBooks) {
 
 
 // =========================
-// 🎯 DISPLAY FUNCTION
+// DISPLAY FUNCTION
 // =========================
 function displayBooks(list = books) {
 
@@ -89,7 +89,7 @@ function displayBooks(list = books) {
 
 
 // =========================
-// ➕ ADD BOOK
+//  ADD BOOK
 // =========================
 document.getElementById("addBook").addEventListener("click", function () {
 
@@ -116,7 +116,7 @@ document.getElementById("addBook").addEventListener("click", function () {
 
 
 // =========================
-// 🗑️ + ✏️ EVENT DELEGATION
+//  EVENT DELEGATION
 // =========================
 document.addEventListener("click", function (e) {
 
@@ -178,7 +178,7 @@ document.addEventListener("click", function (e) {
 
 
 // =========================
-// 🔍 SEARCH
+//  SEARCH
 // =========================
 document.getElementById("search_box").addEventListener("input", function () {
 
@@ -200,7 +200,7 @@ document.getElementById("search_box").addEventListener("input", function () {
 
 
 // =========================
-// 🚀 INIT
+//   INIT
 // =========================
 
     
