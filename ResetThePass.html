@@ -16,9 +16,10 @@
     <div class="text">
         <h2>Reset Password</h2>
         <p>We 'll email you a link to reset your Password.</p>
-        <form action="Login.html" method="post">
+        <form action="Login.html" method="post" id="resetPassForm">
 
-            <input type="email" placeholder="✉ Email" name="email" required>
+            <input type="email" placeholder="✉ Email" name="email" required id="email">
+            <p id="message"></p>
             <button type="submit">Send an email</button>
         </form>
 
@@ -26,6 +27,6 @@
     </div>
 
 </div>
-
+<script src="ResetThePass.js"></script>
 </body>
 </html>

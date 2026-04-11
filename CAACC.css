@@ -69,6 +69,7 @@ h2
     height: 100%;
     object-fit: cover;
     filter: brightness(60%);
+    display: block;
 }
 
 .container .text
@@ -116,5 +117,13 @@ button a { color: white; text-decoration: none; }
     text-decoration: underline;
 }
 
+
+#message {
+    height: 1.2rem;
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: red;
+    display: block;
+}
 
 

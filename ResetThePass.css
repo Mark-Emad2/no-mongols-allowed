@@ -105,6 +105,12 @@ a {
 
 }
 
+#message {
+    height: 1.2rem;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    display: block;
+}
 
 
 
