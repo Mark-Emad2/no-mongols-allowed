@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,63 +8,108 @@
     <link rel="stylesheet" href="book-details.css">
 
 </head>
+
 <body>
-    <nav>
-        <div>
-            <a href="home.html">
-                <img src="Picture/Untitled design.png" alt="logo" width="300" height="80">
-            </a>
-        </div>
-        <div>
-            <input type="search" placeholder="search books">
-        </div>
-    </nav>
     <header>
-        <h1>Clean Code</h1>
-        <a href="https://en.wikipedia.org/wiki/Robert_Martin_(anti-war_activist)" target="_blank">Robert Martin</a>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="Picture/ddfgd.png" alt="logo">
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="search" placeholder="search books" class="search-input">
+            </div>
+        </nav>
     </header>
-    <section>
-        <img src="Picture/71nj3JM-igL._AC_UF1000,1000_QL80_.jpg" alt="cover" width="303" height="425">
-    </section>
-    <div>
-        <input type="button" value="Borrow the book">
+
+
+    <div class="main-body">
+        <div class="left-section-of-body">
+            <div class="image-section">
+                <img src="Picture/71nj3JM-igL._AC_UF1000,1000_QL80_.jpg" alt="cover" class="book-cover">
+                <a href="javascript:void(0)" class="btn-borrow"
+                    onclick="borrowBook('Clean Code', 'Robert Martin', 'Picture/71nj3JM-igL._AC_UF1000,1000_QL80_.jpg')">Borrow
+                    the book</a>
+                <a href="#" class="btn-buy">Buy from Amazon</a>
+                <div class="Stars">
+                    <input type="radio" id="star1" name="star" class="star"><label for="star1">★</label>
+                    <input type="radio" id="star2" name="star" class="star"><label for="star2">★</label>
+                    <input type="radio" id="star3" name="star" class="star"><label for="star3">★</label>
+                    <input type="radio" id="star4" name="star" class="star"><label for="star4">★</label>
+                    <input type="radio" id="star5" name="star" class="star"><label for="star5">★</label>
+                </div>
+                <div class="sent-rate">
+                    <p class="rate-quote"><b>Rate the book</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="right-section-of-body">
+            <div class="title-info">
+
+                <h1 class="book-title">Clean Code</h1>
+
+                <!-- <a href="https://en.wikipedia.org/wiki/Matt_Haig" target="_blank" class="author-pic">
+                        <img src="Picture/Matt_Haig_at_the_2024_Edinburgh_International_Book_Festival_(cropped).jpg" alt="author-pic">
+                    </a> -->
+                <span>By: </span><a href="https://en.wikipedia.org/wiki/Robert_Martin_(anti-war_activist)"
+                    target="_blank" class="author-link">Robert Martin</a>
+                <div class="rating-row">
+                    <span class="final-rating">★★★★★</span>
+                    <p class="rating-fraction">4.47</p>
+                </div>
+            </div>
+
+            <div class="Description">
+                <h3>Description:</h3>
+                <p>Even bad code can function. But if code isn’t clean, it can bring a development organization to its
+                    knees. Every year, countless hours and significant resources are lost because of poorly written
+                    code. But it doesn’t have to be that way.
+
+                    Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook
+                    of Agile Software Craftsmanship. Martin has teamed up with his colleagues from Object Mentor to
+                    distill their best agile practice of cleaning code “on the fly” into a book that will instill within
+                    you the values of a software craftsman and make you a better programmer but only if you work at it.
+
+                    What kind of work will you be doing? You’ll be reading code—lots of code. And you will be challenged
+                    to think about what’s right about that code, and what’s wrong with it. More importantly, you will be
+                    challenged to reassess your professional values and your commitment to your craft.
+
+                    Clean Code is divided into three parts. The first describes the principles, patterns, and practices
+                    of writing clean code. The second part consists of several case studies of increasing complexity.
+                    Each case study is an exercise in cleaning up code—of transforming a code base that has some
+                    problems into one that is sound and efficient. The third part is the payoff: a single chapter
+                    containing a list of heuristics and “smells” gathered while creating the case studies. The result is
+                    a knowledge base that describes the way we think when we write, read, and clean code.
+                </p>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <h3 class="label">Release Date : </h3>
+                    <p class="value">August 1, 2008</p>
+                </div>
+                <div class="info-row">
+                    <h3 class="label">Written language : </h3>
+                    <p class="value">English</p>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3>Categories:</h3>
+                <div class="category-list">
+                    <span>computer science</span>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <div>
-    <input type="button" value="Not Available (Currently Borrowed)" disabled>
-    </div> -->
-    <section>
-        <div>
-            <h3>Release Date : </h3>
-            <p>August 1, 2008</p>
-        </div>
-        <hr>
-        <div>
-            <h3>Written language : </h3>
-            <p>English</p>
-        </div>
-    </section>
-    <hr>
-    <section>
-        <div class="Description">
-            <h3>Description:</h3>
-            <p>Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees.<br> Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.<br>
 
-            Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship. <br>Martin has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code “on the fly” into a book that will instill within you the values of a software craftsman and make you a better programmer but only if you work at it.<br>
 
-            What kind of work will you be doing?<br> You’ll be reading code—lots of code. And you will be challenged to think about what’s right about that code, and what’s wrong with it. More importantly, you will be challenged to reassess your professional values and your commitment to your craft.<br>
 
-            Clean Code is divided into three parts.<br> The first describes the principles, patterns, and practices of writing clean code.<br> The second part consists of several case studies of increasing complexity. Each case study is an exercise in cleaning up code—of transforming a code base that has some problems into one that is sound and efficient.<br> The third part is the payoff: a single chapter containing a list of heuristics and “smells” gathered while creating the case studies. The result is a knowledge base that describes the way we think when we write, read, and clean code.
-            </p>
-        </div>
-        <hr>
-        <div class="category">
-            <h3>Categories:</h3>
-            <p>computer science.</p>
+    <script src="clean cod.js"></script>
 
-        </div>
-    </section>
-    
 
-    
 </body>
+
 </html>
