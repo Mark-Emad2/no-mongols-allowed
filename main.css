@@ -24,7 +24,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #6C4CE6;
+    color: #361E15;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -63,6 +63,11 @@ body {
     background-color: #F5F1EA;
 }
 
+body::selection
+{
+    background-color: #B08D57;
+}
+
 .hero-section {
     display: flex;
     min-height: 100vh;
@@ -91,7 +96,7 @@ body {
 
 
 #leftH {
-    color: #4B2E83;
+    color: #361E15;
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 58px;
@@ -196,36 +201,54 @@ body {
 
 
 
-.footer {
-    text-align: left;
-    padding: 0px 20px;
-    width: 70%;
-    margin-top: 90px;
+.container {
+    margin-top: 60px;
+    background-color: #361E15;
+    color: #e0d6c8;
 }
 
-.rights {
-    margin: 0 20px;
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 25px 20px;
+    text-align: center;
 }
 
 .social {
-    width: 15%;
     display: flex;
-    justify-content: space-evenly;
-    text-align: left;
-    margin: 10px auto;
-    border-bottom: 3px black solid;
-    border-radius: 3px;
-    background-color: #FFFFFF;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.social .card a {
+    display: inline-block;
+    transition: transform 0.2s ease;
 }
 
 .social .card img {
-    height: 30px;
-    margin: 10px auto;
-    transition: transform 0.3s ease;
+    height: 35px;
+    width: auto;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
 }
 
-.social .card img:hover {
-    transform: translateY(-5px) scale(1.15);
+.social .card a:hover {
+    transform: translateY(-5px);
+}
+
+.rights p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #cfc5b5;
+}
+
+.rights h5 {
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: #b0a28f;
 }
 
 
