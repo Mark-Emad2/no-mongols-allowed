@@ -67,10 +67,7 @@
     font-size: 15px;
 }
 
-.input-group input[type="text"],
-.input-group input[type="date"],
-textarea,
-.upload-group input[type="file"] {
+.input-group input ,textarea {
     flex: 1; 
     padding: 12px 15px;
     border: 1px solid #D1C9B8;
@@ -81,8 +78,7 @@ textarea,
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.input-group input[type="text"]:focus,
-.input-group input[type="date"]:focus,
+.input-group input:focus,
 textarea:focus {
     border-color: #4B2E83;
     box-shadow: 0 0 5px rgba(75, 46, 131, 0.2);

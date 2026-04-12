@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: document.getElementById('id_b').value,
             name: document.getElementById('name_b').value,
             author: document.getElementById('author').value,
+            aboutAuthor: document.getElementById('aboutAuthor').value,
+            amazonLink: document.getElementById('amazonLink').value,
             date: document.getElementById('release_date').value,
             language: document.getElementById('written_lan').value,
             category: final_category, 
