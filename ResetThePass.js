@@ -6,28 +6,37 @@ resetForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const inputEmail = email.value;
-    const storedEmail = localStorage.getItem('userEmail');
 
-    if (inputEmail === storedEmail) {
-        message.textContent = "Email found! Sending reset link...";
-        message.style.color = "green";
-        email.style.borderColor='green';
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-        setTimeout(() => {
-            const textContainer = document.querySelector('.text');
-            textContainer.innerHTML = `
+    const emailExist = users.find (u => u.userEmail === inputEmail);
+
+
+        if (emailExist)
+        {
+            message.textContent = 'Welcome!'
+            message.style.color='';
+            setTimeout(() => {
+                const textContainer = document.getElementById('text');
+                textContainer.innerHTML = `
                 <h2>Check your inbox!</h2>
                 <p>A reset link has been sent to <strong>${inputEmail}</strong></p>
                 <div style="margin-top: 20px;">
                     <a href="Login.html" style="color: #2c3e50; font-weight: bold;">Go back to Login</a>
                 </div>
             `;
-        }, 3000);
+            }, 2000);
+        }
 
-    } else {
+        else {
         message.textContent = "This email is not registered.";
-        message.style.color = "red";
-
+        message.style.color = 'red';
         email.style.borderColor = "red";
+        setTimeout( () =>{
+            message.textContent='';
+            email.style.borderColor ='';
+            email.value = '';
+            }
+        ,2000)
     }
 });

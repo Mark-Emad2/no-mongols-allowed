@@ -111,6 +111,13 @@ color: #111;
 
 
 
+#message {
+    height: 1.2rem;
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: red;
+    display: block;
+}
 
 
 
