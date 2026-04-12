@@ -12,7 +12,7 @@ body {
     flex-direction: column;
 }
 
-/* Header / Navbar */
+
 header {
     background-color: #361E15;
     padding: 1rem 5%;
@@ -31,7 +31,7 @@ header {
     width: auto;
 }
 
-/* Navigation Links - Simple side by side links */
+
 .nav-links {
     display: flex;
     gap: 35px;
@@ -57,7 +57,7 @@ header {
     color: #D4896A;
 }
 
-/* Search Box */
+
 .search {
     display: flex;
     align-items: center;
@@ -104,7 +104,7 @@ header {
     color: #361E15;
 }
 
-/* Main borrowed section */
+
 .borrowed-section {
     max-width: 1400px;
     margin: 40px auto;
@@ -128,7 +128,7 @@ header {
     border-bottom: 3px solid #D4896A;
 }
 
-/* Total count badge */
+
 .total {
     display: inline-block;
     background-color: #D4896A;
@@ -141,7 +141,7 @@ header {
     vertical-align: middle;
 }
 
-/* Container for borrowed books - FLEX with SPACE-EVENLY */
+
 #Container {
     display: flex;
     flex-direction: row;
@@ -152,7 +152,7 @@ header {
     width: 80%;
 }
 
-/* Empty state styling */
+
 .empty-state {
     width: 100%;
     text-align: center;
@@ -172,7 +172,7 @@ header {
     color: #7a6a5a;
 }
 
-/* Individual book card */
+
 .book_card {
     background: white;
     border-radius: 15px;
@@ -188,14 +188,14 @@ header {
     cursor: pointer;
 }
 
-/* When there's more space, cards can grow slightly */
+
 @media (min-width: 1200px) {
     .book_card {
         width: 280px;
     }
 }
 
-/* When space is tight, cards shrink */
+
 @media (max-width: 900px) {
     .book_card {
         width: 240px;
@@ -217,7 +217,7 @@ header {
     height: 100%;
 }
 
-/* Cover image area */
+
 .cover {
     background-color: #f5efe3;
     display: flex;
@@ -240,7 +240,7 @@ header {
     transform: scale(1.02);
 }
 
-/* Info area */
+
 .info {
     padding: 20px;
     flex: 1;
@@ -279,7 +279,7 @@ header {
     color: #2D2424;
 }
 
-/* Return button */
+
 .return_button {
     background-color: #D4896A;
     color: white;
@@ -301,7 +301,7 @@ header {
     transform: scale(1.02);
 }
 
-/* Return all books button */
+
 .reAllbutton {
     display: block;
     background-color: #361E15;
@@ -324,7 +324,7 @@ header {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Borrow more link */
+
 .borrowed-section > div:last-child {
     text-align: center;
     margin-top: 20px;
@@ -346,7 +346,6 @@ header {
     text-decoration: underline;
 }
 
-/* Footer styling */
 .container {
     margin-top: 60px;
     background-color: #361E15;
@@ -397,7 +396,6 @@ header {
     color: #b0a28f;
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
     .navbar {
         flex-direction: column;
