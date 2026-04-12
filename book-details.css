@@ -137,6 +137,138 @@ body {
 
 
 
-.right-section-of-body{
+/* .right-section-of-body{
     padding: 30px;
+}
+
+
+
+.book-title {
+    margin-bottom: 10px;
+    font-family: Copernicus;
+    font-size:3rem;
+    line-height: 3rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+.author-link{
+    font-size:1.56rem;
+    color: #563d2d;
+    text-decoration: none;
+    font-weight: 500;
+    margin-: 15px;
+} */
+
+.right-section-of-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    
+}
+
+.right-section-of-body > div {
+    margin-left: 30px;
+    background: #ffffff99;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.book-title {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    font-family:Copernicus ;
+}
+
+.author-link {
+    font-size: 1.1rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #777;
+    background-image: linear-gradient(#B85C38, #B85C38);
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+
+    margin-bottom: 10px;
+    transition: all 0.4s ease;
+}
+.author-link:hover{
+    background-size: 100% 1.5px;
+    color: #B85C38;
+}
+
+.final-rating {
+    color: #f4b400;
+    font-size: 2rem;
+}
+
+.rating-fraction {
+    color: #000000;
+    font-size: 1.6rem;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.Description p {
+    line-height: 1.7;
+    color: #444;
+    margin-top: 10px;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.label {
+    font-weight: 600;
+    color: #000;
+}
+
+.value {
+    color: #555;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-list span {
+    margin-top: 15px;
+    background: #eee;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    cursor:pointer;
+}
+
+.category-list span:hover {
+    background-color: #b85c38aa;
+}
+
+.book-title::after {
+    content: "";
+    display: block;
+    width: 25%;
+    height: 4px;
+    background: #B85C38;
+    margin-top: 10px;
+    border-radius: 2px;
 }
