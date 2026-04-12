@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('releaseDate').innerText = kitab.date;
         document.getElementById('bookLang').innerText = kitab.language;
 
+        const borrowBtn = document.querySelector('.btn-borrow');
+        borrowBtn.onclick = function(e) {
+            e.preventDefault();
+            borrowBook(kitab.name, kitab.author, kitab.cover);
+        };
+
         const catContainer = document.getElementById('categoryList');
         if (kitab.category) {
             catContainer.innerHTML = kitab.category.split(', ')
@@ -26,3 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('bookTitle').innerText = "Book Not Found";
     }
 });
+
+function borrowBook(bookTitle, bookAuthor, bookCover) {
+    let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+    
+    const alreadyBorrowed = borrowed_books.some(book => book.title === bookTitle);
+    
+    if (alreadyBorrowed) {
+        alert('You have already borrowed this book!');
+        return;
+    }
+    
+    const today = new Date();
+    const newBook = {
+        id: Date.now(), 
+        title: bookTitle,
+        author: bookAuthor,
+        cover: bookCover,
+        borrowedDate: today.toISOString().split('T')[0],
+    };
+    
+    borrowed_books.push(newBook);
+    localStorage.setItem('borrowedBooks', JSON.stringify(borrowed_books));
+    
+    alert(`"${bookTitle}" has been borrowed successfully!`);
+    window.location.href = 'borrowed books.html';
+}
