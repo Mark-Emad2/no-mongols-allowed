@@ -8,54 +8,89 @@
 
 </head>
 <body>
-    <nav>
-        <div>
-            <a href="home.html">
-                <img src="Picture/Untitled design.png" alt="logo" width="300" height="80">
-            </a>
-        </div>
-        <div>
-            <input type="search" placeholder="search books">
-        </div>
-    </nav>
-    <header>
-        <h1>Before the Coffee Gets Cold</h1>
-        <a href="https://en.wikipedia.org/wiki/Toshikazu_Kawaguchi" target="_blank">Toshikazu Kawaguchi</a>
-    <section>
-        <img src="Picture/coffee.jpg" alt="cover" width="303" height="425">
-    </section>
-    <div>
-        <input type="button" value="Borrow the book">
-    </div>
-    <!-- <div>
-    <input type="button" value="Not Available (Currently Borrowed)" disabled>
-    </div> -->
-    <section>
-        <div>
-            <h3>Release Date : </h3>
-            <p>December 6, 2015</p>
-        </div>
-        <hr>
-        <div>
-            <h3>Written language : </h3>
-            <p>English</p>
-        </div>
-    </section>
-    <hr>
-    <section>
-        <div class="Description">
-            <h3>Description:</h3>
-            <span class="Formatted"><b>
-            <i>What would you change if you could go back in time?</i>
-            </b><br><br>In a small back alley in Tokyo, there is a café which has been serving carefully brewed coffee for more than one hundred years. But this coffee shop offers its customers a unique experience: the chance to travel back in time.<br><br>In <i>Before the Coffee Gets Cold</i>, we meet four visitors, each of whom is hoping to make use of the café’s time-travelling offer, in order to: confront the man who left them, receive a letter from their husband whose memory has been taken by early onset Alzheimer's, to see their sister one last time, and to meet the daughter they never got the chance to know.<br><br>But the journey into the past does not come without risks: customers must sit in a particular seat, they cannot leave the café, and finally, they must return to the present before the coffee gets cold . . .<br><br>Toshikazu Kawaguchi’s beautiful, moving story explores the age-old question: what would you change if you could travel back in time? More importantly, who would you want to meet, maybe for one last time?</span>
-        </div>
-        <hr>
-        <div class="category">
-            <h3>Categories:</h3>
-            <p>Fiction, Fantasy, Magical Realism, Contemporary, Time Travel.</p>
 
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="Picture/ddfgd.png" alt="logo">
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="search" placeholder="search books" class="search-input">
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-body">
+        <div class="left-section-of-body">
+            <div class="image-section">
+                <img src="Picture/coffee.jpg" alt="cover" class="book-cover">
+                <a href="available_books_user.html" class="btn-borrow" >Borrow the book</a>
+                <a href="#" class="btn-buy">Buy from Amazon</a>
+                <div class="Stars">
+                    <input type="radio" id="star1" name="star" class="star"><label for="star1">★</label>
+                    <input type="radio" id="star2" name="star" class="star"><label for="star2">★</label>
+                    <input type="radio" id="star3" name="star" class="star"><label for="star3">★</label>
+                    <input type="radio" id="star4" name="star" class="star"><label for="star4">★</label>
+                    <input type="radio" id="star5" name="star" class="star"><label for="star5">★</label>
+                </div>
+                <div class="sent-rate">
+                    <p class="rate-quote"><b>Rate the book</b></p>
+                </div>
+            </div>
         </div>
-    </section>
+        <div class="right-section-of-body">
+            <div class="title-info">
+                
+                <h1 class="book-title">Before the Coffee Gets Cold</h1>
+                
+                    <!-- <a href="https://en.wikipedia.org/wiki/Matt_Haig" target="_blank" class="author-pic">
+                        <img src="Picture/Matt_Haig_at_the_2024_Edinburgh_International_Book_Festival_(cropped).jpg" alt="author-pic">
+                    </a> -->
+                <span>By: </span><a href="https://en.wikipedia.org/wiki/Toshikazu_Kawaguchi" target="_blank" class="author-link">Toshikazu Kawaguchi</a>
+                <div class="rating-row">
+                    <span class="final-rating">★★★★★</span>
+                    <p class="rating-fraction">4.47</p>
+                </div>
+            </div> 
+            
+            <div class="Description">
+                <h3>Description:</h3>
+                <p>
+                    In a small back alley in Tokyo, there is a café which has been serving carefully brewed coffee for more than one hundred years. But this coffee shop offers its customers a unique experience: the chance to travel back in time.
+
+                    In Before the Coffee Gets Cold, we meet four visitors, each of whom is hoping to make use of the café’s time-travelling offer, in order to: confront the man who left them, receive a letter from their husband whose memory has been taken by early onset Alzheimer's, to see their sister one last time, and to meet the daughter they never got the chance to know.
+
+                    But the journey into the past does not come without risks: customers must sit in a particular seat, they cannot leave the café, and finally, they must return to the present before the coffee gets cold . . .
+
+                    Toshikazu Kawaguchi’s beautiful, moving story explores the age-old question: what would you change if you could travel back in time? More importantly, who would you want to meet, maybe for one last time?
+                </p>
+            </div>
+
+            <div class="info-group">
+                <div class="info-row">
+                    <h3 class="label">Release Date : </h3>
+                    <p class="value">December 6, 2015</p>
+                </div>
+                <div class="info-row">
+                    <h3 class="label">Written language : </h3>
+                    <p class="value">English</p>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3>Categories:</h3>
+                <div class="category-list">
+                    <span>Fiction</span>
+                    <span>Fantasy</span>
+                    <span>Time Travel</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     
 
     
