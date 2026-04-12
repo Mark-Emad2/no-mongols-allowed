@@ -2,7 +2,6 @@ function loadBooks(){
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     displayBooks(borrowed_books);
 }
-
 function displayBooks(borrowed_books){
     let storage = document.getElementById('Container');
     if(borrowed_books.length === 0){
@@ -16,7 +15,7 @@ function displayBooks(borrowed_books){
     storage.innerHTML = '';
     borrowed_books.forEach(book => {
         let book_card = `
-        <div class="book_card" data-book-id="${book.id}" data-book-title="${book.title}" data-book-author="${book.author}" data-book-cover="${book.cover}">
+        <div class="book_card" data-book-title="${book.title}" data-book-author="${book.author}" data-book-cover="${book.cover}">
             <div class="card_content">
                 <div class="cover">
                     <img src="${book.cover || 'Picture/default-cover.jpg'}" 
@@ -38,33 +37,33 @@ function displayBooks(borrowed_books){
         `;
         storage.innerHTML += book_card;
     });
-    
     document.querySelectorAll('.book_card').forEach(card => {
         card.addEventListener('click', function(e) {
             if(e.target.classList.contains('return_button')) {
                 return;
             }
-            
-            const bookTitle = this.dataset.bookTitle;
-            const bookAuthor = this.dataset.bookAuthor;
-            const bookCover = this.dataset.bookCover;
-            
-            redirectToBookDetails(bookTitle, bookAuthor, bookCover);
+            const title = this.dataset.bookTitle;
+            const author = this.dataset.bookAuthor;
+            const cover = this.dataset.bookCover;
+            redirectToBookDetails(title, author, cover);
         });
     });
     
     updateCount(borrowed_books.length);
 }
-
 function redirectToBookDetails(title, author, cover) {
-    const allBooks = JSON.parse(localStorage.getItem('books')) || [];
+    const bookDetailPages = {
+        'The Midnight Library': 'Midnight_Detail_user.html',
+        'Clean Code': 'CleanCode_details.html',
+        'في ممر الفئران': 'mouse_details.html',
+        'The Beginning after the End': 'theBeginngin_details.html',
+        'Before the Coffee Gets Cold': 'coffee_detils.html',
+        'The Beginning after the End(Divergence)': 'theBeginngin_details.html'
+    };
+    let detailPage = bookDetailPages[title];
     
-    const foundBook = allBooks.find(book => 
-        book.name === title && book.author === author
-    );
-    
-    if (foundBook) {
-        window.location.href = `book_details.html?id=${foundBook.id}`;
+    if (detailPage) {
+        window.location.href = detailPage;
     } else {
         localStorage.setItem('selectedBook', JSON.stringify({
             title: title,
@@ -75,7 +74,6 @@ function redirectToBookDetails(title, author, cover) {
         window.location.href = 'available_books_user.html';
     }
 }
-
 function returnBook(book_id){
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     let book_return = borrowed_books.find(book => book.id === book_id);
@@ -85,7 +83,6 @@ function returnBook(book_id){
         loadBooks();
     }       
 }
-
 function returnAllBooks(){
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     if(borrowed_books.length > 0 && confirm(`Return all ${borrowed_books.length} borrowed books?`)){
@@ -98,7 +95,6 @@ function formatDate(dateString){
     const options = {year:'numeric', month:'long', day:'numeric'};
     return new Date(dateString).toLocaleDateString(undefined, options);
 }
-
 function updateCount(count){
     let countElement = document.getElementById('totalCount');
     if(!countElement){
@@ -114,14 +110,11 @@ function updateCount(count){
         countElement.textContent = count + ' book' + (count !== 1 ? 's' : '');
     }
 }
-
 function isAvailable(bookTitle){
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     return !borrowed_books.some(book => book.title === bookTitle);
 }
-
 function getBorrowedBooks(){
     return JSON.parse(localStorage.getItem('borrowedBooks')) || [];
 }
-
 loadBooks();
