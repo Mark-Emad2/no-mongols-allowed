@@ -35,26 +35,5 @@ document.addEventListener('DOMContentLoaded', () => {
     displayBooks();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const bookId = params.get('id');
 
-    let data = localStorage.getItem('books');
-    let books = data ? JSON.parse(data) : [];
-
-    const book = books.find(b => b.id == bookId);
-
-    if (book) {
-        document.querySelector('.book-title').innerText = book.name;
-        document.querySelector('.author-link').innerText = book.author;
-        document.querySelector('.author-link').href = book.aboutAuthor;
-        document.querySelector('.book-cover').src = book.cover;
-        document.querySelector('.Description p').innerText = book.desc;
-        document.querySelector('.value[release]').innerText = book.date; // تأكد من إضافة class أو id مناسب في HTML
-        document.querySelector('.btn-buy').href = book.amazonLink;
-        
-        const catContainer = document.querySelector('.category-list');
-        catContainer.innerHTML = book.category.split(', ').map(cat => `<span>${cat}</span>`).join('');
-    }
-});
 
