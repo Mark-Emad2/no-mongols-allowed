@@ -124,3 +124,11 @@ header {
     font-size: 0.75rem;
     font-weight: bold;
 }
+
+.ebara h3{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    
+    font-size: 2rem;
+}
