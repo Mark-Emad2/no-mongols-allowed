@@ -1,20 +1,38 @@
-const loginForm = document.querySelector('form[action="main.html"]');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const message = document.getElementById('message');
+const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', (e) => {
-    const email = loginForm.email.value;
-    const pass = loginForm.password.value;
+    const emailInput = email.value;
+    const passInput = password.value;
 
-    // const storedName = localStorage.getItem('firstname')
-    const storedName = localStorage.getItem('firstname') || "Guest";
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    const storedEmail = localStorage.getItem('userEmail');
+    const userexist = users.find (u => u.userEmail === emailInput && u.userPassword === passInput);
 
-    const storedPass = localStorage.getItem('userPassword');
-
-    if (email === storedEmail && pass === storedPass) {
-        alert(`Welcome back, ${storedName}!`);
-    } else {
-        e.preventDefault();
-        alert("Invalid Email or Password");
+    if (userexist) {
+        setTimeout(() => {
+            window.location.href = "main.html";
+        }, 3000);
     }
+    else
+    {
+        e.preventDefault();
+        message.textContent = 'Not a Registered User!';
+        message.style.color = 'red';
+        password.style.borderColor = 'red';
+        email.style.borderColor = 'red';
+        email.value ='';
+        password.value = '';
+
+        setTimeout(() => {
+            email.style.borderColor = "";
+            password.style.borderColor = "";
+            message.textContent = "";
+        }, 2000);
+    }
+
+
+
 });

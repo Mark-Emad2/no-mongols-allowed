@@ -6,37 +6,58 @@ const confirmPassword = document.getElementById('confirmPassword');
 const message = document.getElementById('message');
 const submitBtn = signupForm.querySelector('button');
 
+
 signupForm.addEventListener('submit', (e) => {
 
+    e.preventDefault();
+
     if (password.value !== confirmPassword.value) {
-        e.preventDefault();
         message.textContent = "Passwords do not match!";
         message.style.color = "red";
         confirmPassword.style.borderColor = "red";
-    } else {
-        e.preventDefault();
-        localStorage.setItem('firstname',firstname.value)
-        localStorage.setItem('userEmail', email.value);
-        localStorage.setItem('userPassword', password.value);
-        confirmPassword.style.borderColor = "green";
-
-        submitBtn.innerText = "Please wait...";
-        message.textContent = "Account Created! Redirecting to Login...";
-        message.style.color = "green";
+        password.value = "";
+        confirmPassword.value ='';
 
         setTimeout(() => {
-            window.location.href = "Login.html";
+            confirmPassword.style.borderColor = "";
+            message.textContent = "";
         }, 2000);
+    } else {
+
+        const newUser =
+            {
+                userName : firstname.value,
+                userEmail : email.value,
+                userPassword : password.value
+            };
+
+        let users =  JSON.parse(localStorage.getItem('users'))||[];
+
+        const exist = users.find(u => u.userEmail === newUser.userEmail);
+        if(exist)
+        {
+            message.textContent = 'User Already Exists! ';
+            message.style.color = "#111";
+            return;
+        }
+        else
+        {
+            users.push(newUser);
+
+            localStorage.setItem('users',JSON.stringify(users));
+
+            confirmPassword.style.borderColor = "green";
+            submitBtn.innerText = "Please wait...";
+            message.textContent = "Account Created! Redirecting to Login...";
+            message.style.color = "green";
+
+            setTimeout(() => {
+                window.location.href = "Login.html";
+            }, 2000);
+
+        }
+
     }
 });
 
-// confirmPassword.addEventListener('input', () => {
-//     if (confirmPassword.value === password.value) {
-//         message.textContent = "Passwords match";
-//         message.style.color = "green";
-//     } else {
-//         confirmPassword.style.borderColor = "red";
-//         message.textContent = "Passwords must match";
-//         message.style.color = "red";
-//     }
-// });
+// localStorage.clear();
