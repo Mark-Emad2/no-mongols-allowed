@@ -49,7 +49,7 @@ signupForm.addEventListener('submit', (e) => {
             confirmPassword.style.borderColor = "green";
             submitBtn.innerText = "Please wait...";
             message.textContent = "Account Created! Redirecting to Login...";
-            message.style.color = "green";
+            message.style.color = "#111";
 
             setTimeout(() => {
                 window.location.href = "Login.html";
