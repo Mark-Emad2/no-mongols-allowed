@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="book-details.css">
 
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -21,7 +23,7 @@
         </nav>
     </header>
 
-    
+
 
 
 
@@ -29,7 +31,9 @@
         <div class="left-section-of-body">
             <div class="image-section">
                 <img src="Picture/غلاف_رواية_في_ممر_الفئران.jpeg" alt="cover" class="book-cover">
-                <a href="available_books_user.html" class="btn-borrow" >Borrow the book</a>
+                <a href="javascript:void(0)" class="btn-borrow"
+                        onclick="borrowBook('في ممر الفئران', 'أحمد خالد توفيق', 'Picture/غلاف_رواية_في_ممر_الفئران.jpeg')">Borrow
+                        the book</a>
                 <a href="#" class="btn-buy">Buy from Amazon</a>
                 <div class="Stars">
                     <input type="radio" id="star1" name="star" class="star"><label for="star1">★</label>
@@ -45,24 +49,31 @@
         </div>
         <div class="right-section-of-body">
             <div class="title-info">
-                
+
                 <h1 class="book-title">في ممر الفئران</h1>
-                
-                    <!-- <a href="https://en.wikipedia.org/wiki/Matt_Haig" target="_blank" class="author-pic">
+
+                <!-- <a href="https://en.wikipedia.org/wiki/Matt_Haig" target="_blank" class="author-pic">
                         <img src="Picture/Matt_Haig_at_the_2024_Edinburgh_International_Book_Festival_(cropped).jpg" alt="author-pic">
                     </a> -->
-                <span>By: </span><a href="https://ar.wikipedia.org/wiki/%D8%A3%D8%AD%D9%85%D8%AF_%D8%AE%D8%A7%D9%84%D8%AF_%D8%AA%D9%88%D9%81%D9%8A%D9%82" target="_blank" class="author-link">أحمد خالد توفيق</a>
+                <span>By: </span><a
+                    href="https://ar.wikipedia.org/wiki/%D8%A3%D8%AD%D9%85%D8%AF_%D8%AE%D8%A7%D9%84%D8%AF_%D8%AA%D9%88%D9%81%D9%8A%D9%82"
+                    target="_blank" class="author-link">أحمد خالد توفيق</a>
                 <div class="rating-row">
                     <span class="final-rating">★★★★★</span>
                     <p class="rating-fraction">4.47</p>
                 </div>
-            </div> 
-            
+            </div>
+
             <div class="Description">
                 <h3>Description:</h3>
-                <p>دعني أنتحِ بك جانبًا لأخبرك بسر لا يعرفه سوانا. احترس! لا ترفع صوتك.. عندما نحلم، فإن وعينا يسافر لبعد آخر ليمارس حياة أخرى ويلقى أناسًا آخرين، ويعرف وجوهًا أخرى. (فرويد) لم يقل هذا، لكن دعني أخبرك أنها الحقيقة. بل هي الحقيقة الوحيدة... وقال الله: (فليكن نور) فكان نور "
+                <p>دعني أنتحِ بك جانبًا لأخبرك بسر لا يعرفه سوانا. احترس! لا ترفع صوتك.. عندما نحلم، فإن وعينا يسافر
+                    لبعد آخر ليمارس حياة أخرى ويلقى أناسًا آخرين، ويعرف وجوهًا أخرى. (فرويد) لم يقل هذا، لكن دعني أخبرك
+                    أنها الحقيقة. بل هي الحقيقة الوحيدة... وقال الله: (فليكن نور) فكان نور "
 
-                كتب د. أحمد خالد توفيق من قبل عن عالم كابوسي، يمتزج فيه معنى الظلام بمعاني الجهل والقهر والتخبط. ولكنه اليوم يقدم لنا رواية ديستوبية مثيرة عن عالم لم يعد النور فيه من حقوق الإنسان الطبيعية، وحيث يتخبط الناس مكفوفين في ممر الفئران، وهم يجهلون أن هناك نورًا خلقه الله، وأنه كان للجميع قبل أن تحتكره فئة محظوظة. ربما كان الخلاص ممكنًا، ولربما هو أمل زائف. سنعرف عندما نعرف...
+                    كتب د. أحمد خالد توفيق من قبل عن عالم كابوسي، يمتزج فيه معنى الظلام بمعاني الجهل والقهر والتخبط.
+                    ولكنه اليوم يقدم لنا رواية ديستوبية مثيرة عن عالم لم يعد النور فيه من حقوق الإنسان الطبيعية، وحيث
+                    يتخبط الناس مكفوفين في ممر الفئران، وهم يجهلون أن هناك نورًا خلقه الله، وأنه كان للجميع قبل أن
+                    تحتكره فئة محظوظة. ربما كان الخلاص ممكنًا، ولربما هو أمل زائف. سنعرف عندما نعرف...
                 </p>
             </div>
 
@@ -90,8 +101,9 @@
     </div>
 
 
-    
 
-    
+    <script src="rats.js"></script>
+
 </body>
+
 </html>
