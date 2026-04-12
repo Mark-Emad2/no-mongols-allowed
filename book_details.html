@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="book-details.css">
+</head>
+
+<!-- ----------------------------------------------------------------------------------------- -->
+
+<body class="details-page">
+
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="Picture/ddfgd.png" alt="logo">
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="search" placeholder="search books" class="search-input">
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="main-body">
+    <div class="left-section-of-body">
+        <div class="image-section">
+            <img src="" alt="cover" class="book-cover" id="bookCover">
+            <a href="" class="btn-borrow">Borrow the book</a>
+            <a href="#" class="btn-buy" id="amazonLink" target="_blank">Buy from Amazon</a>
+            
+            <div class="Stars">
+                <input type="radio" id="star5" name="star"><label for="star5">★</label>
+                <input type="radio" id="star4" name="star"><label for="star4">★</label>
+                <input type="radio" id="star3" name="star"><label for="star3">★</label>
+                <input type="radio" id="star2" name="star"><label for="star2">★</label>
+                <input type="radio" id="star1" name="star"><label for="star1">★</label>
+            </div>
+            <div class="sent-rate">
+                <p class="rate-quote"><b>Rate the book</b></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-section-of-body">
+        <div class="title-info">
+            <h1 class="book-title" id="bookTitle">Loading...</h1>
+            <span>By: </span><a href="#" target="_blank" class="author-link" id="authorName">Loading...</a>
+            <div class="rating-row">
+                <span class="final-rating">★★★★★</span>
+                <p class="rating-fraction">4.47</p>
+            </div>
+        </div> 
+        
+        <div class="Description">
+            <h3>Description:</h3>
+            <p id="bookDesc">Loading description...</p>
+        </div>
+
+        <div class="info-group">
+            <div class="info-row">
+                <h3 class="label">Release Date : </h3>
+                <p class="value" id="releaseDate">-</p>
+            </div>
+            <div class="info-row">
+                <h3 class="label">Written language : </h3>
+                <p class="value" id="bookLang">-</p>
+            </div>
+        </div>
+
+        <div class="category">
+            <h3>Categories:</h3>
+            <div class="category-list" id="categoryList">
+                </div>
+        </div>
+    </div>
+</div>
+
+<script src="book_details.js"></script>
+    
+    
+
+    
+
+
+    <!-- <div class="bottom-of-body">
+        <div class="suggestion-bar">
+            <div class="suggested-card">
+                <div class="suggested-card-image">
+
+                </div>
+                <div class="suggested-card-info">
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div> -->
+
+
+</body>
+</html>
