@@ -34,10 +34,15 @@
             <label for="author">Author:</label>
             <input id="author" type="text" name="author" placeholder="ex:Joanne Rowling..." required>
         </div>
+        
+        <div class="input-group">
+            <label for="aboutAuthor">About Author</label>
+            <input id="aboutAuthor" type="url" name="aboutAuthor" placeholder="ex:https://author.com" required>
+        </div>
 
         <div class="input-group">
             <label for="release_date">Release Date:</label>
-            <input id="release_date" type="date" name="release_date">
+            <input id="release_date" type="text" name="release_date" placeholder="ex:June 8,2006..." required>
         </div>
 
         <div class="input-group">
@@ -45,22 +50,27 @@
             <input id="written_lan" type="text" name="written_lan" placeholder="ex:English...">
         </div>
 
+        <div class="input-group">
+            <label for="amazonLink">Amazon Link:</label>
+            <input id="amazonLink" type="url" name="amazonLink" placeholder="ex:https://amazomLink.com...">
+        </div>
+
         <h3 class="section-title">Categories Section</h3>
         
         <div class="checkbox-container">
-            <div><input id="cat1" type="checkbox" name="category" value="Science_Fiction"> 
+            <div><input id="cat1" type="checkbox" name="category" value="Science Fiction"> 
                 <label for="cat1">Science Fiction</label>
             </div>
 
-            <div><input id="cat2" type="checkbox" name="category" value="Literary_Fiction"> 
+            <div><input id="cat2" type="checkbox" name="category" value="Literary Fiction"> 
                 <label for="cat2">Literary Fiction</label>
             </div>
 
-            <div><input id="cat3" type="checkbox" name="category" value="Historical_Fiction"> 
+            <div><input id="cat3" type="checkbox" name="category" value="Historical Fiction"> 
                 <label for="cat3">Historical Fiction</label>
             </div>
 
-            <div><input id="cat4" type="checkbox" name="category" value="Thriller"> 
+            <div><input id="cat4" type="checkbox" name="category" value="Thriller & Suspense"> 
                 <label for="cat4">Thriller & Suspense</label>
             </div>
 
@@ -69,7 +79,7 @@
             </div>
 
             <div><input id="cat6" type="checkbox" name="category" value="Mystery">
-                 <label for="cat6">Mystery</label>
+                <label for="cat6">Mystery</label>
                 </div>
 
             <div><input id="cat7" type="checkbox" name="category" value="Horror"> 
@@ -91,7 +101,8 @@
         </textarea>
 
         <h3 class="section-title">Upload The Cover Page</h3>
-        <div class="upload-group">
+
+        <div class="input-group">
             <label for="file">Upload the book cover: </label>
             <input id="file" type="file" name="file" accept="image/*" required>
             <img id="view" src="" alt="Cover view" style="display: none; 
@@ -103,6 +114,8 @@
             <input type="submit" value="Add Book" class="btn-submit">
             <input type="Reset" value="Reset" class="btn-reset">
         </div>
+
+        
     </form>
 </div>
 
@@ -147,6 +160,8 @@
         </div>
     </div>
 </div>
+
+<script src="add.js"></script>
 
 </body>
 
