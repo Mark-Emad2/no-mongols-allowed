@@ -7,15 +7,16 @@
 nav {
     position: absolute;
     top: 30px;
-    left: 50%;
+    left: 75%;
     transform: translateX(-50%);
     z-index: 10;
+    width: 60%;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 80px;
 }
 
 nav ul li {
@@ -24,7 +25,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #6C4CE6;
+    color: #361E15;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -62,6 +63,11 @@ body {
     overflow-y: auto;
     background-color: #F5F1EA;
 }
+body::selection
+{
+    background-color: #B08D57;
+}
+
 
 .hero-section {
     display: flex;
@@ -91,7 +97,7 @@ body {
 
 
 #leftH {
-    color: #4B2E83;
+    color: #361E15;
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 58px;
@@ -163,75 +169,90 @@ body {
     font-family: 'Cinzel', serif;
 }
 
-
-
-#Login1 {
-    text-decoration: none;
-    color: #6C4CE6;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
-    transition: color 0.3s, transform 0.3s;
-}
-
 .auth-links {
     margin-top: 40px;
     display: flex;
     gap: 60px;
     opacity: 0;
-}
 
-#Login2 {
-    text-decoration: none;
-    color: #6C4CE6;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
-    transition: color 0.3s, transform 0.3s;
-}
-
-#Login1:hover,
-#Login2:hover {
-    color: #B08D57;
-    transform: translateX(5px);
 }
 
 
+/*#Login2 , #Login1 {*/
+/*    text-decoration: none;*/
+/*    color: #6C4CE6;*/
+/*    font-size: 16px;*/
+/*    font-weight: 700;*/
+/*    letter-spacing: 1.5px;*/
+/*    font-family: Arial, sans-serif;*/
+/*    text-transform: uppercase;*/
+/*    transition: color 0.3s, transform 0.3s;*/
+/*    padding: 25px;*/
+/*    border-radius: 10px;*/
+/*    border: 2px black solid;*/
+/*}*/
+
+/*#Login1*/
+/*{*/
+/*    background-color: #6C4CE6 ;*/
+/*    color:#B08D57;*/
+/*}*/
+
+/*#Login1:hover,*/
+/*#Login2:hover {*/
+/*    color: #B08D57;*/
+/*    transform: translateX(5px);*/
+/*}*/
+
+
+.container {
+    margin-top: 60px;
+    background-color: #361E15;
+    color: #e0d6c8;
+}
 
 .footer {
-    text-align: left;
-    padding: 0px 20px;
-    width: 70%;
-    margin-top: 90px;
-}
-
-.rights {
-    margin: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 25px 20px;
+    text-align: center;
 }
 
 .social {
-    width: 15%;
     display: flex;
-    justify-content: space-evenly;
-    text-align: left;
-    margin: 10px auto;
-    border-bottom: 3px black solid;
-    border-radius: 3px;
-    background-color: #FFFFFF;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.social .card a {
+    display: inline-block;
+    transition: transform 0.2s ease;
 }
 
 .social .card img {
-    height: 30px;
-    margin: 10px auto;
-    transition: transform 0.3s ease;
+    height: 35px;
+    width: auto;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
 }
 
-.social .card img:hover {
-    transform: translateY(-5px) scale(1.15);
+.social .card a:hover {
+    transform: translateY(-5px);
+}
+
+.rights p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #cfc5b5;
+}
+
+.rights h5 {
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: #b0a28f;
 }
 
 
