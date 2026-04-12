@@ -1,18 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('booksContainer');
-    
+    const searchInput = document.querySelector('.search-input');
+
     let data = localStorage.getItem('books');
     let books = data ? JSON.parse(data) : [];
 
-    function displayBooks() {
+    function displayBooks(booksArray) {
         container.innerHTML = ""; 
         
-        if (books.length === 0) {
+        if (booksArray.length === 0) {
             container.innerHTML = "<h3>No books available yet.</h3>";
             return;
         }
 
-        books.forEach(book => {
+        booksArray.forEach(book => {
             const card = `
                 <div class="book-card">
                     <span class="book-badge available">Available</span>
@@ -32,7 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    displayBooks();
+
+    
+
+    displayBooks(books);
+
+    if (searchInput){
+        searchInput.addEventListener('input',(e)=>{
+        let keyword = e.target.value.toLowerCase();
+
+        let filter = books.filter(book=> {
+            let matchName = book.name.toLowerCase().includes(keyword);
+            let matchAuthor = book.author.toLowerCase().includes(keyword);
+            return matchName || matchAuthor ;
+        });
+
+        displayBooks(filter)
+            });
+    }
 });
 
 
