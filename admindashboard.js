@@ -180,23 +180,6 @@ document.addEventListener("click", function (e) {
 // =========================
 //  SEARCH
 // =========================
-document.getElementById("search_box").addEventListener("input", function () {
-
-    let value = this.value.toLowerCase();
-
-    if (value === "") {
-        displayBooks();
-        return;
-    }
-
-    let filtered = books.filter(book =>
-        book.name.toLowerCase().includes(value) ||
-        book.author.toLowerCase().includes(value) ||
-        book.category.toLowerCase().includes(value)
-    );
-
-    displayBooks(filtered);
-});
 
 
 // =========================
