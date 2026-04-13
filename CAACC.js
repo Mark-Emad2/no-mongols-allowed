@@ -12,6 +12,13 @@ const orgPasswordInput = document.getElementById('orgPassword');
 
 const Organ_Pass = "loginasadmin";
 
+const clearMessage = () => {
+    setTimeout(() => {
+        message.textContent = '';
+        orgPasswordInput.style.borderColor = "";
+    }, 2000);
+};
+
 adminCheckbox.addEventListener('change', () => {
     if (adminCheckbox.checked) {
         orgPassContainer.style.display = 'block';
@@ -28,10 +35,10 @@ signupForm.addEventListener('submit', (e) => {
 
     const isAdmin = adminCheckbox.checked;
 
-
     if (password.value !== confirmPassword.value) {
         message.textContent = "Passwords do not match!";
         message.style.color = "red";
+        clearMessage();
         return;
     }
 
@@ -39,6 +46,7 @@ signupForm.addEventListener('submit', (e) => {
         message.textContent = "Invalid Organization Password!";
         message.style.color = "red";
         orgPasswordInput.style.borderColor = "red";
+        clearMessage();
         return;
     }
 
@@ -55,6 +63,7 @@ signupForm.addEventListener('submit', (e) => {
     if (exist) {
         message.textContent = 'User Already Exists!';
         message.style.color = "red";
+        clearMessage();
         return;
     }
 
@@ -71,5 +80,3 @@ signupForm.addEventListener('submit', (e) => {
         window.location.href = "Login.html";
     }, 2000);
 });
-
-// localStorage.clear();

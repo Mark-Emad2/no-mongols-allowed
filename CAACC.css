@@ -135,6 +135,8 @@ button a { color: white; text-decoration: none; }
     font-size: 0.9rem;
     color: red;
     display: block;
+    z-index: 10;
+
 }
 
 
