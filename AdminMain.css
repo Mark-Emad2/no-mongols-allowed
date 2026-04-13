@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+nav ul li {
+    opacity: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #361E15;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #B08D57;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #B08D57;
+}
+
+body {
+    min-height: 90vh;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #F5F1EA;
+}
+
+body::selection
+{
+    background-color: #B08D57;
+}
+
+.hero-section {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.leftside {
+    width: 70%;
+    min-height: 100vh;
+    background-color: #F5F1EA;
+    padding: 170px 90px 80px 90px;
+    position: relative;
+    z-index: 2;
+}
+
+.rightside {
+    width: 30%;
+    min-height: 90vh;
+    background-image: url("Picture/Home.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+
+#leftH {
+    color: #361E15;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 1.2;
+    margin-bottom: 35px;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+#leftP {
+    color: #3A2F2A;
+    line-height: 1.8;
+    font-family: Garamond, serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 600;
+    max-width: 760px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+
+.title-line {
+    width: 0;
+    height: 3px;
+    background-color: #B08D57;
+    position: absolute;
+    top: 320px;
+    left: 95px;
+    border-radius: 2px;
+    z-index: 5;
+}
+
+.quote-decor {
+    position: absolute;
+    left: 80px;
+    top: 300px;
+    font-size: 120px;
+    color: #d8d1c7;
+    opacity: 0;
+    z-index: 2;
+    font-family: Georgia, serif;
+}
+
+.corner-decor {
+    position: absolute;
+    top: 160px;
+    left: 45px;
+    width: 0;
+    height: 0;
+    border-top: 3px solid #B08D57;
+    border-left: 3px solid #B08D57;
+    z-index: 3;
+}
+
+.side-word {
+    position: absolute;
+    left: 35px;
+    top: 430px;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    font-size: 26px;
+    color: #d8d1c7;
+    letter-spacing: 6px;
+    opacity: 0;
+    z-index: 4;
+    font-family: 'Cinzel', serif;
+}
+
+
+
+#Login1 {
+    text-decoration: none;
+    color: #6C4CE6;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+}
+
+
+#Login2 {
+    text-decoration: none;
+    color: #6C4CE6;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#Login1:hover,
+#Login2:hover {
+    color: #B08D57;
+    transform: translateX(5px);
+}
+
+
+
+.container {
+    margin-top: 60px;
+    background-color: #361E15;
+    color: #e0d6c8;
+}
+
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 25px 20px;
+    text-align: center;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.social .card a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.social .card img {
+    height: 35px;
+    width: auto;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+}
+
+.social .card a:hover {
+    transform: translateY(-5px);
+}
+
+.rights p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #cfc5b5;
+}
+
+.rights h5 {
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: #b0a28f;
+}
+
+
+.autoShow {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.autoShow.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
