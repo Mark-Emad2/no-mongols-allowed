@@ -11,13 +11,13 @@
 
 <body>
 
-
+<!-- 
 <div class="nav">
 
     <div class="logo">
         <a href="main.html">
             <img src="Picture/Untitled design.png" alt="logo">
-             <!-- <img src="Untitled design.png" alt="logo"> -->
+              <img src="Untitled design.png" alt="logo"> 
         </a>
     </div>
 
@@ -34,11 +34,37 @@
             <li><a href="add.html">Add book </a></li>
             <li><a href="available_books_user.html">Browse Books</a></li>
             <li><a href="borrowed%20books.html">My Borrowed Books</a></li>
-            <!-- <li><a href="CleanCodeDetails.html">Admin Dashboard</a></li> -->
+           
             <li> <a href="main.html">Log out</a></li>
         </ul>
     </div>
-</div>
+</div>  -->
+
+ <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="main.html">
+                    <img src="Picture/ddfgd.png" alt="logo">
+                </a>
+            </div>  
+
+            <div class="search">
+                <form action="" method="GET">
+                    <input id="search_box" class="search-input" type="search" name="search" placeholder="Search books...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            
+            <div class="nav-links">
+                <a href="add.html">Add book</a>
+                <a href="admindashboard.html" class="active">Admin Dashboard</a>
+                <a href="available_books_user.html">Browse Books</a>
+                <a href="MainPage.html">Log out</a>
+            </div>
+            
+        </nav>
+    </header>
+
 
 <h1>Admin Dashboard</h1>
 <p>
@@ -64,7 +90,7 @@ and remove books from the library to keep the collection organized and up to dat
             <th>Book Name</th>
             <th>Author</th>
             <th>Category</th>
-            <th>Publication Date</th>
+            <th>Release Date</th>
             <th>Language</th>
             <th>Actions</th>
         </tr>
