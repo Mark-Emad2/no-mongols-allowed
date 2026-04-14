@@ -11,7 +11,7 @@ const initialBooks = [
         name: "The Beginning after the End (Divergence)", 
         author: "TurtleMe", 
         aboutAuthor: "https://tbate.fandom.com/wiki/TurtleMe",
-        bookDetailsPage: "theBeginning_details.html", 
+        bookDetailsPage: "theBeginngin_details.html", 
         category: "Fantasy, Light Novel, Fiction, Adventure", 
         date: "February 15, 2020", 
         language: "English", 
@@ -67,10 +67,10 @@ const initialBooks = [
 
     let books = JSON.parse(localStorage.getItem('books'));
 
-    if (!books || books.length === 0) {
-        books = initialBooks;
-        localStorage.setItem('books', JSON.stringify(books));
-    }
+    // if (!books || books.length === 0) {
+    //     books = initialBooks;
+    //     localStorage.setItem('books', JSON.stringify(books));
+    // }
 
     //  dISPLAY FUNCTION
 
