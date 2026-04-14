@@ -6,17 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let books = data ? JSON.parse(data) : [];
 
     function displayBooks(booksArray) {
-        container.innerHTML = ""; 
-        
+        container.innerHTML = "";
+
         if (booksArray.length === 0) {
             container.innerHTML = "<h3>No books available yet.</h3>";
             return;
         }
 
         booksArray.forEach(book => {
+            let statusText = book.available ? "Available" : "Borrowed";
+            let statusClass = book.available ? "available" : "borrowed";
+            
             const card = `
                 <div class="book-card">
-                    <span class="book-badge available">Available</span>
+                    <span class="book-badge ${statusClass}">${statusText}</span>
                     <a href="book_details.html?id=${book.id}">
                         <img src="${book.cover}" alt="${book.name}" class="card-img">
                     </a>
@@ -33,25 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    
-
     displayBooks(books);
 
-    if (searchInput){
-        searchInput.addEventListener('input',(e)=>{
-        let keyword = e.target.value.toLowerCase();
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            let keyword = e.target.value.toLowerCase();
 
-        let filter = books.filter(book=> {
-            let matchName = book.name.toLowerCase().includes(keyword);
-            let matchAuthor = book.author.toLowerCase().includes(keyword);
-            return matchName || matchAuthor ;
-        });
-
-        displayBooks(filter)
+            let filter = books.filter(book => {
+                let matchName = book.name.toLowerCase().includes(keyword);
+                let matchAuthor = book.author.toLowerCase().includes(keyword);
+                return matchName || matchAuthor;
             });
+
+            displayBooks(filter);
+        });
     }
 });
-
-
-

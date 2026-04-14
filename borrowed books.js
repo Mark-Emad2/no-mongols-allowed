@@ -16,11 +16,10 @@ function displayBooks(borrowed_books){
     storage.innerHTML = '';
     borrowed_books.forEach(book => {
         let book_card = `
-        <div class="book_card" data-book-id="${book.id}" data-book-title="${book.title}" data-book-author="${book.author}" data-book-cover="${book.cover}">
+        <div class="book_card" data-book-id="${book.id}" data-book-title="${book.title}" data-book-author="${book.author}" data-book-cover="${book.cover}" data-original-id="${book.originalBookId}">
             <div class="card_content">
                 <div class="cover">
                     <img src="${book.cover || 'Picture/default-cover.jpg'}" 
-                        alt="${book.title}"
                         onerror="this.src='Picture/default-cover.jpg'">
                 </div>
                 <div class="info">
@@ -30,7 +29,7 @@ function displayBooks(borrowed_books){
                         <p><strong>Borrowed:</strong> ${formatDate(book.borrowedDate)}</p>
                     </div>
                     <div class="return">
-                        <button class='return_button' onclick="event.stopPropagation(); returnBook(${book.id})">Return Book</button>
+                        <button class='return_button' onclick="event.stopPropagation(); returnBook(${book.id}, '${book.title.replace(/'/g, "\\'")}')">Return Book</button>
                     </div>
                 </div>
             </div>
@@ -75,12 +74,22 @@ function redirectToBookDetails(title, author, cover) {
     }
 }
 
-function returnBook(book_id){
+function returnBook(book_id, bookTitle) {
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     let book_return = borrowed_books.find(book => book.id === book_id);
-    if(book_return && confirm(`Return "${book_return.title}"?`)){
+    
+    if(book_return && confirm(`Return "${bookTitle}"?`)){
         borrowed_books = borrowed_books.filter(book => book.id !== book_id);
         localStorage.setItem('borrowedBooks', JSON.stringify(borrowed_books));
+        let books = JSON.parse(localStorage.getItem('books')) || [];
+        books = books.map(book => {
+            if (book.name === bookTitle) {
+                return { ...book, available: true };
+            }
+            return book;
+        });
+        localStorage.setItem('books', JSON.stringify(books));
+        
         loadBooks();
     }       
 }
@@ -88,6 +97,16 @@ function returnBook(book_id){
 function returnAllBooks(){
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     if(borrowed_books.length > 0 && confirm(`Return all ${borrowed_books.length} borrowed books?`)){
+        let books = JSON.parse(localStorage.getItem('books')) || [];
+        borrowed_books.forEach(borrowedBook => {
+            books = books.map(book => {
+                if (book.name === borrowedBook.title) {
+                    return { ...book, available: true };
+                }
+                return book;
+            });
+        });
+        localStorage.setItem('books', JSON.stringify(books));
         localStorage.removeItem('borrowedBooks');
         loadBooks();
     }
@@ -112,11 +131,6 @@ function updateCount(count){
     if(countElement){
         countElement.textContent = count + ' book' + (count !== 1 ? 's' : '');
     }
-}
-
-function isAvailable(bookTitle){
-    let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
-    return !borrowed_books.some(book => book.title === bookTitle);
 }
 
 function getBorrowedBooks(){

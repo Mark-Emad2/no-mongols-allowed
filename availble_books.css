@@ -268,3 +268,23 @@ header {
         width: 180px;
     }
 }
+.book-badge.available {
+    background: #D4EDDA;
+    color: #155724;
+}
+
+.book-badge.borrowed {
+    background: #F8D7DA;
+    color: #721C24;
+}
+
+.book-badge {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}

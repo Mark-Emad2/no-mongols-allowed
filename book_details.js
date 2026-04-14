@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const bookId = params.get('id');
 
-    const data = localStorage.getItem('books');
-    const shelf = data ? JSON.parse(data) : [];
+    let data = localStorage.getItem('books');
+    let shelf = data ? JSON.parse(data) : [];
 
     const kitab = shelf.find(b => b.id == bookId);
 
@@ -17,11 +17,25 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('releaseDate').innerText = kitab.date;
         document.getElementById('bookLang').innerText = kitab.language;
 
+    
         const borrowBtn = document.querySelector('.btn-borrow');
-        borrowBtn.onclick = function(e) {
-            e.preventDefault();
-            borrowBook(kitab.name, kitab.author, kitab.cover);
-        };
+        if (!kitab.available) {
+            borrowBtn.textContent = 'Not Available';
+            borrowBtn.style.backgroundColor = '#888';
+            borrowBtn.style.cursor = 'not-allowed';
+            borrowBtn.onclick = function(e) {
+                e.preventDefault();
+                alert('This book is currently borrowed by someone else.');
+            };
+        } else {
+            borrowBtn.textContent = 'Borrow the book';
+            borrowBtn.style.backgroundColor = '#B85C38';
+            borrowBtn.style.cursor = 'pointer';
+            borrowBtn.onclick = function(e) {
+                e.preventDefault();
+                borrowBook(kitab);
+            };
+        }
 
         const catContainer = document.getElementById('categoryList');
         if (kitab.category) {
@@ -33,28 +47,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function borrowBook(bookTitle, bookAuthor, bookCover) {
+function borrowBook(book) {
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     
-    const alreadyBorrowed = borrowed_books.some(book => book.title === bookTitle);
-    
+    const alreadyBorrowed = borrowed_books.some(b => b.title === book.name);
     if (alreadyBorrowed) {
         alert('You have already borrowed this book!');
         return;
     }
     
+    let books = JSON.parse(localStorage.getItem('books')) || [];
+    const currentBook = books.find(b => b.id == book.id);
+    if (!currentBook.available) {
+        alert('This book is not available for borrowing right now.');
+        return;
+    }
+    
     const today = new Date();
     const newBook = {
-        id: Date.now(), 
-        title: bookTitle,
-        author: bookAuthor,
-        cover: bookCover,
+        id: Date.now(),
+        title: book.name,
+        author: book.author,
+        cover: book.cover,
         borrowedDate: today.toISOString().split('T')[0],
+        originalBookId: book.id
     };
     
     borrowed_books.push(newBook);
     localStorage.setItem('borrowedBooks', JSON.stringify(borrowed_books));
+    books = books.map(b => {
+        if (b.id == book.id) {
+            return { ...b, available: false };
+        }
+        return b;
+    });
+    localStorage.setItem('books', JSON.stringify(books));
     
-    alert(`"${bookTitle}" has been borrowed successfully!`);
+    alert(`"${book.name}" has been borrowed successfully!`);
     window.location.href = 'borrowed books.html';
 }
