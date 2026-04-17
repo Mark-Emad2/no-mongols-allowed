@@ -27,7 +27,7 @@ function displayAdminBooks(booksArray) {
         
         
 
-        const detailsPage = book.bookDetailsPage || `book_details.html?id=${book.id}`;
+        const detailsPage = book.bookDetailsPage || `book_details_Admin.html?id=${book.id}`;
         const authorLink = book.aboutAuthor || "#";
 
         tr.innerHTML = `
