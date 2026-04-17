@@ -145,12 +145,12 @@ textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.input-group #view{
-    display: none; 
-    max-width: 150px; 
+.input-group #view {
+    display: none;
+    max-width: 150px;
     margin-top: 15px;
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .input-group input:focus,
@@ -204,7 +204,7 @@ textarea:focus {
 
 
 textarea {
-    width: 100% ;
+    width: 100%;
     min-height: 25rem;
     resize: none;
     font-size: 16px;
