@@ -5,63 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // dIFULT BOOKS DATA
 
-const initialBooks = [
-    { 
-        id: "1", 
-        name: "The Beginning after the End (Divergence)", 
-        author: "TurtleMe", 
-        aboutAuthor: "https://tbate.fandom.com/wiki/TurtleMe",
-        bookDetailsPage: "theBeginngin_details.html", 
-        category: "Fantasy, Light Novel, Fiction, Adventure", 
-        date: "February 15, 2020", 
-        language: "English", 
-        cover: "Picture/the begging after the end.jpg" 
-    },
-    { 
-        id: "2", 
-        name: "في ممر الفئران", 
-        author: "أحمد خالد توفيق", 
-        aboutAuthor: "https://ar.wikipedia.org/wiki/%D8%A3%D8%AD%D9%85%D8%AF_%D8%AE%D8%A7%D9%84%D8%AF_%D8%AA%D9%88%D9%81%D9%8A%D9%82",
-        bookDetailsPage: "mouse_details.html",
-        category: "Fiction, Dystopia, Fantasy, Literature", 
-        date: "July 6, 2016", 
-        language: "Arabic", 
-        cover: "Picture/غلاف_رواية_في_ممر_الفئران.jpeg" 
-    },
-    { 
-        id: "3", 
-        name: "Before the Coffee Gets Cold", 
-        author: "Toshikazu Kawaguchi", 
-        aboutAuthor: "https://en.wikipedia.org/wiki/Toshikazu_Kawaguchi",
-        bookDetailsPage: "coffee_detils.html",
-        category: "Fiction, Dystopia, Fantasy, Literature", 
-        date: "December 6, 2015", 
-        language: "English", 
-        cover: "Picture/coffee.jpg" 
-    },
-    { 
-        id: "4", 
-        name: "The Midnight Library", 
-        author: "Matt Haig", 
-        aboutAuthor: "https://en.wikipedia.org/wiki/Matt_Haig",
-        bookDetailsPage: "Midnight_Detail_user.html",
-        category: "Fiction, Fantasy, Contemporary, Magical Realism", 
-        date: "August 13, 2020", 
-        language: "English", 
-        cover: "Picture/71qsovx-x6L._SY425_.jpg" 
-    },
-    { 
-        id: "5", 
-        name: "Clean Code", 
-        author: "Robert Martin", 
-        aboutAuthor: "https://en.wikipedia.org/wiki/Robert_Martin_(anti-war_activist)",
-        bookDetailsPage: "CleanCode_details.html",
-        category: "Software, Programming, Best Practices", 
-        date: "August 1, 2008", 
-        language: "English", 
-        cover: "Picture/71nj3JM-igL._AC_UF1000,1000_QL80_.jpg" 
-    }
-];
+
 
     //  GITING DATA FROM LOCAL STORAGE OR INITIALIZING IT
 
