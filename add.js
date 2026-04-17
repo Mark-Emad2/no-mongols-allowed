@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             language: document.getElementById('written_lan').value,
             category: final_category, 
             desc: document.querySelector('textarea').value,
-            cover: img
+            cover: img,
+            available : true
         };
 
         shelf.push(kitab);
