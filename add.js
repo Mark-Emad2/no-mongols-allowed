@@ -54,7 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
         shelf.push(kitab);
         localStorage.setItem('books', JSON.stringify(shelf));
 
-        alert('The Book is Added');
+        // alert('The Book is Added');
+        Swal.fire({
+        title: "Success!",
+        text: "The Book is Added successfully!",
+        icon: "success",
+        confirmButtonColor: "#B85C38" 
+        });
+
         book_form.reset();
         preview_img.style.display = 'none';
         img = "";

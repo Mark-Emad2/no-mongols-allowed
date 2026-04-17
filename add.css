@@ -197,6 +197,18 @@ textarea:focus {
     margin-top: 50px;
 }
 
+::placeholder {
+    color: #A9A9A9;
+    font-style: italic;
+}
+
+
+textarea {
+    width: 100% ;
+    min-height: 25rem;
+    resize: none;
+}
+
 .container {
     margin-top: 60px;
     background-color: #361E15;
