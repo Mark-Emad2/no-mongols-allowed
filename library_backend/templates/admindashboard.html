@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<title>Admin Dashboard</title>
+    <!-- <link rel="stylesheet" href="main.css"> -->
+    <link rel="stylesheet" href="admindashboard.css">
+    
+
+</head>
+
+<body>
+
+<!-- 
+<div class="nav">
+
+    <div class="logo">
+        <a href="main.html">
+            <img src="Picture/Untitled design.png" alt="logo">
+              <img src="Untitled design.png" alt="logo"> 
+        </a>
+    </div>
+
+<div class="search">
+    <form id="searchForm">
+        <label for="search_box">Search: </label>
+        <input id="search_box" type="search" name="search" placeholder="Title, author, category...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+    <div class="links">
+        <ul>
+            <li><a href="add.html">Add book </a></li>
+            <li><a href="available_books_user.html">Browse Books</a></li>
+            <li><a href="borrowed%20books.html">My Borrowed Books</a></li>
+           
+            <li> <a href="main.html">Log out</a></li>
+        </ul>
+    </div>
+</div>  -->
+
+ <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="AdminMain.html">
+                    <img src="Picture/ddfgd.png" alt="logo">
+                </a>
+            </div>  
+
+            <div class="search">
+                <form action="" method="GET">
+                    <input id="search_box" class="search-input" type="search" name="search" placeholder="Search books...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            
+            <div class="nav-links">
+                <a href="add.html">Add book</a>
+                <a href="admindashboard.html" class="active">Admin Dashboard</a>
+                <a href="available_book_admin.html">Browse Books</a>
+                <a href="MainPage.html">Log out</a>
+            </div>
+            
+        </nav>
+    </header>
+
+
+<h1>Admin Dashboard</h1>
+<p>
+This dashboard allows the administrator to manage the library system. 
+The admin can view all books, add new books, update existing book details, 
+and remove books from the library to keep the collection organized and up to date.
+</p>
+
+<br>
+
+<!-- Add Book Button -->
+<!-- <button id="addBook">Add Book</button> -->
+
+<br><br>
+
+<h2>Available Books</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cover</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Release Date</th>
+            <th>Language</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="adminTableBody">
+        
+    </tbody>
+</table>
+
+</body>
+
+<script src="admindashboard.js" defer></script>
+
+</html>

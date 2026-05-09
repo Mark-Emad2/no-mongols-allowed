@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Reset Password</title>
-    <link rel="stylesheet" href="ResetThePass.css">
+    {% load static %}
+<link rel="stylesheet" href="{% static 'ResetThePass.css' %}">
 </head>
 <body>
 
 <div class="container">
 
     <div class="image">
-        <img src="Picture/Reset.jpg" alt="Stack of library books">
+       <img src="{% static 'Picture/Reset.jpg' %}">
     </div>
 
     <div class="text" id = 'text'>
@@ -23,10 +24,10 @@
             <button type="submit">Send an email</button>
         </form>
 
-        <a href="Login.html">  Go back to Login</a>
+        <a href="/login/">  Go back to Login</a>
     </div>
 
 </div>
-<script src="ResetThePass.js"></script>
+<script src="{% static 'ResetThePass.js' %}"></script>
 </body>
 </html>

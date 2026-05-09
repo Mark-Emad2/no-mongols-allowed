@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'CAACC.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="image">
+        <img src="{% static 'Picture/loginboks.jfif' %}">
+    </div>
+    <div class="text">
+        <h2>Sign Up</h2>
+
+        <form id="signupForm">
+            <input type="text"     required placeholder="First Name"       name="firstName" id="firstname">
+            <input type="text"     required placeholder="Last Name"        name="lastName">
+            <input type="email"    required placeholder="Email"            name="email"     id="email">
+            <input type="password" required placeholder="Password"         name="password"  id="password"        minlength="8">
+            <input type="password" required placeholder="Confirm Password"                  id="confirmPassword">
+
+            <p id="message"></p>
+
+            <div class="checkbox">
+                <input type="checkbox" id="TOS" name="TOS" required>
+                <label for="TOS">Accept <a href="#">Terms of Service</a></label>
+            </div>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <div class="signin">
+            <p>Already have an account? <a href="Login.html">Sign In</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'CAACC.js' %}"></script>
+</body>
+</html>
