@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,15 +6,15 @@
             Library-Main page
         </title>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel = "stylesheet" href = "Main.css">
+        <link rel = "stylesheet" href = "{%static 'Main.css'%}">
     </head>    
 
     <body>
     <nav>
         <ul>
-            <li><a href="available_book_admin.html">Browse Books</a></li>
-            <li><a href="admindashboard.html">Admin Dashboard</a></li>
-            <li><a href = "MainPage.html">Log Out</a></li>
+            <li><a href="/available_book_admin/">Browse Books</a></li>
+            <li><a href="/admindashboard/">Admin Dashboard</a></li>
+            <li><a href = "/MainPage/">Log Out</a></li>
         </ul>
     </nav>
 
@@ -39,17 +40,17 @@
             <div class="social">
                 <div class="card">
                     <a href="https://www.facebook.com/share/1NTinaAZPG/" target="_blank">
-                        <img src="Picture/Face.webp" alt="Facebook Link">
+                        <img src="{% static 'Picture/Face.webp' %}" alt="Facebook Link">
                     </a>
                 </div>
                 <div class="card">
                     <a href="#" target="_blank">
-                        <img src="Picture/Instgram.webp" alt="Instagram Link">
+                        <img src="{% static 'Picture/Instagram.webp' %}" alt="Instagram Link">
                     </a>
                 </div>
                 <div class="card">
                     <a href="https://wa.me/201146310227" target="_blank">
-                        <img src="Picture/what'sapp.png" alt="WhatsApp Link">
+                        <img src="{% static 'Picture/whatsapp.png' %}" alt="WhatsApp Link">
                     </a>
                 </div>
             </div>
@@ -67,6 +68,6 @@
             </div>
         </div>
     </div>
-    <script src="MainPage.js" defer></script>
+    <script src="{% static 'MainPage.js'%}" ></script>
 </body>
 </html>
