@@ -1,28 +1,22 @@
-{%load static%}
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>borrowed books</title>
-    <link rel="stylesheet" href="{%static 'borrowed style.css'%}">
+    {% load static %}
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" href="{% static 'borrowed style.css' %}">
 </head>
-
 <body>
-
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="main.html">
-                    <img src="{%static 'Picture/ddfgd.png' %}" alt="logo">
+                <a href="/main/">
+                    <img src="{% static 'Picture/ddfgd.png' %}" alt="logo">
                 </a>
             </div>
-            
             <div class="nav-links">
                 <a href="/available_books_user/">Browse Books</a>
-                <a href="/borrowed%20books/" class="active">My Borrowed Books</a>
+                <a href="/borrowed_books/" class="active">My Borrowed Books</a>
                 <a href="/MainPage/">Log out</a>
-            </div>
-
-            
             </div>
         </nav>
     </header>
@@ -32,28 +26,17 @@
         <div class="borrowed-header">
             <h1>My Borrowed Books</h1>
         </div>
-
-
-        <div id="Container">
-
-        </div>
-
+        <div id="Container"></div>
         <div>
-            <button id="returnall" class="reAllbutton" onclick="returnAllBooks()">return all books</button>
+            <button id="returnall" class="reAllbutton" onclick="returnAllBooks()">Return all books</button>
         </div>
-
         <br>
-
         <div>
             <p><a href="/available_books_user/">Borrow More Books</a></p>
         </div>
     </div>
 
-    <div class="container">
-
-    {%include 'footer.html' %}
+    {% include "footer.html" %}
+    <script src="{% static 'borrowed_books.js' %}"></script>
 </body>
-
-<script src="{%static 'borrowed books.js' %}"></script>
-
 </html>

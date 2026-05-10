@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('releaseDate').innerText = kitab.date;
         document.getElementById('bookLang').innerText = kitab.language;
 
-    
         const borrowBtn = document.querySelector('.btn-borrow');
         if (!kitab.available) {
             borrowBtn.textContent = 'Not Available';
@@ -49,20 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function borrowBook(book) {
     let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
-    
+
     const alreadyBorrowed = borrowed_books.some(b => b.title === book.name);
     if (alreadyBorrowed) {
         alert('You have already borrowed this book!');
         return;
     }
-    
+
     let books = JSON.parse(localStorage.getItem('books')) || [];
     const currentBook = books.find(b => b.id == book.id);
     if (!currentBook.available) {
         alert('This book is not available for borrowing right now.');
         return;
     }
-    
+
     const today = new Date();
     const newBook = {
         id: Date.now(),
@@ -72,9 +71,10 @@ function borrowBook(book) {
         borrowedDate: today.toISOString().split('T')[0],
         originalBookId: book.id
     };
-    
+
     borrowed_books.push(newBook);
     localStorage.setItem('borrowedBooks', JSON.stringify(borrowed_books));
+
     books = books.map(b => {
         if (b.id == book.id) {
             return { ...b, available: false };
@@ -82,7 +82,7 @@ function borrowBook(book) {
         return b;
     });
     localStorage.setItem('books', JSON.stringify(books));
-    
+
     alert(`"${book.name}" has been borrowed successfully!`);
-    window.location.href = 'borrowed books.html';
+    window.location.href = '/borrowed_books/';
 }

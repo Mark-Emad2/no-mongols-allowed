@@ -1,183 +1,99 @@
-{%load static%}
 <!DOCTYPE html>
 <html>
-
 <head>
+    {% load static %}
     <title>Add new book</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="add.css">
+    <link rel="stylesheet" href="{% static 'add.css' %}">
 </head>
-
 <body>
-
-<header>
+    <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="AdminMain.html">
-                    <img src="Picture/ddfgd.png" alt="logo">
+                <a href="/adminhome/">
+                    <img src="{% static 'Picture/ddfgd.png' %}" alt="logo">
                 </a>
             </div>
-            
             <div class="nav-links">
-                <a href="add.html" class="active">Add book</a>
-                <a href="admindashboard.html">Admin Dashboard</a>
-                <a href="available_book_admin.html">Browse Books</a>
-                <a href="MainPage.html">Log out</a>
-            </div>
-
-            
+                <a href="/add/" class="active">Add book</a>
+                <a href="/admindashboard/">Admin Dashboard</a>
+                <a href="/available_book_admin/">Browse Books</a>
+                <a href="/login/">Log out</a>
             </div>
         </nav>
     </header>
-    
-<div class="add-book-card">
 
-    <h2>Add New Book</h2>
-    <a href="admindashboard.html" class="btn-back">Back to Dashboard</a>
-    
-    <form action="" method="Post">
-        <h3 class="section-title">Info</h3>
-        
-        <div class="input-group">
-            <label for="id_b">ID: </label>
-            <input id="id_b" type="text" name="id_b" placeholder="#12346..." required>
-        </div>
+    <div class="add-book-card">
+        <h2>Add New Book</h2>
+        <a href="/admindashboard/" class="btn-back">Back to Dashboard</a>
 
-        <div class="input-group">
-            <label for="name_b">Name:</label>
-            <input id="name_b" type="text" name="name_b" placeholder="ex:Harry Poter..." required>
-        </div>
+        <form action="" method="Post">
+            <h3 class="section-title">Info</h3>
 
-        <div class="input-group">
-            <label for="author">Author:</label>
-            <input id="author" type="text" name="author" placeholder="ex:Joanne Rowling..." required>
-        </div>
-        
-        <div class="input-group">
-            <label for="aboutAuthor">About Author</label>
-            <input id="aboutAuthor" type="url" name="aboutAuthor" placeholder="ex:https://author.com" required>
-        </div>
-
-        <div class="input-group">
-            <label for="release_date">Release Date:</label>
-            <input id="release_date" type="text" name="release_date" placeholder="ex:June 8,2006..." required>
-        </div>
-
-        <div class="input-group">
-            <label for="written_lan">Written Language:</label>
-            <input id="written_lan" type="text" name="written_lan" placeholder="ex:English...">
-        </div>
-
-        <div class="input-group">
-            <label for="amazonLink">Amazon Link:</label>
-            <input id="amazonLink" type="url" name="amazonLink" placeholder="ex:https://amazomLink.com...">
-        </div>
-
-        <h3 class="section-title">Categories Section</h3>
-        
-        <div class="checkbox-container">
-            <div><input id="cat1" type="checkbox" name="category" value="Science Fiction"> 
-                <label for="cat1">Science Fiction</label>
+            <div class="input-group">
+                <label for="id_b">ID: </label>
+                <input id="id_b" type="text" name="id_b" placeholder="#12346..." required>
+            </div>
+            <div class="input-group">
+                <label for="name_b">Name:</label>
+                <input id="name_b" type="text" name="name_b" placeholder="ex:Harry Potter..." required>
+            </div>
+            <div class="input-group">
+                <label for="author">Author:</label>
+                <input id="author" type="text" name="author" placeholder="ex:Joanne Rowling..." required>
+            </div>
+            <div class="input-group">
+                <label for="aboutAuthor">About Author</label>
+                <input id="aboutAuthor" type="url" name="aboutAuthor" placeholder="ex:https://author.com" required>
+            </div>
+            <div class="input-group">
+                <label for="release_date">Release Date:</label>
+                <input id="release_date" type="text" name="release_date" placeholder="ex:June 8,2006..." required>
+            </div>
+            <div class="input-group">
+                <label for="written_lan">Written Language:</label>
+                <input id="written_lan" type="text" name="written_lan" placeholder="ex:English...">
+            </div>
+            <div class="input-group">
+                <label for="amazonLink">Amazon Link:</label>
+                <input id="amazonLink" type="url" name="amazonLink" placeholder="ex:https://amazonLink.com...">
             </div>
 
-            <div><input id="cat2" type="checkbox" name="category" value="Literary Fiction"> 
-                <label for="cat2">Literary Fiction</label>
+            <h3 class="section-title">Categories Section</h3>
+            <div class="checkbox-container">
+                <div><input id="cat1" type="checkbox" name="category" value="Science Fiction"><label for="cat1">Science Fiction</label></div>
+                <div><input id="cat2" type="checkbox" name="category" value="Literary Fiction"><label for="cat2">Literary Fiction</label></div>
+                <div><input id="cat3" type="checkbox" name="category" value="Historical Fiction"><label for="cat3">Historical Fiction</label></div>
+                <div><input id="cat4" type="checkbox" name="category" value="Thriller & Suspense"><label for="cat4">Thriller & Suspense</label></div>
+                <div><input id="cat5" type="checkbox" name="category" value="Fantasy"><label for="cat5">Fantasy</label></div>
+                <div><input id="cat6" type="checkbox" name="category" value="Mystery"><label for="cat6">Mystery</label></div>
+                <div><input id="cat7" type="checkbox" name="category" value="Horror"><label for="cat7">Horror</label></div>
+                <div><input id="cat8" type="checkbox" name="category" value="Romance"><label for="cat8">Romance</label></div>
+                <div><input id="cat9" type="checkbox" name="category" value="Comedy"><label for="cat9">Comedy</label></div>
             </div>
 
-            <div><input id="cat3" type="checkbox" name="category" value="Historical Fiction"> 
-                <label for="cat3">Historical Fiction</label>
+            <h3 class="section-title">Description Section</h3>
+            <textarea name="description" placeholder="Write book description here..." required></textarea>
+
+            <h3 class="section-title">Upload The Cover Page</h3>
+            <div class="input-group">
+                <label for="file">Upload the book cover: </label>
+                <input id="file" type="file" name="file" accept="image/*" required>
+                <img id="view" src="" alt="Cover view">
             </div>
 
-            <div><input id="cat4" type="checkbox" name="category" value="Thriller & Suspense"> 
-                <label for="cat4">Thriller & Suspense</label>
+            <div class="form-actions">
+                <input type="submit" value="Add Book" class="btn-submit">
+                <input type="Reset" value="Reset" class="btn-reset">
             </div>
-
-            <div><input id="cat5" type="checkbox" name="category" value="Fantasy"> 
-                <label for="cat5">Fantasy</label>
-            </div>
-
-            <div><input id="cat6" type="checkbox" name="category" value="Mystery">
-                <label for="cat6">Mystery</label>
-                </div>
-
-            <div><input id="cat7" type="checkbox" name="category" value="Horror"> 
-                <label for="cat7">Horror</label>
-            </div>
-
-            <div><input id="cat8" type="checkbox" name="category" value="Romance"> 
-                <label for="cat8">Romance</label>
-            </div>
-
-            <div><input id="cat9" type="checkbox" name="category" value="Comedy"> 
-                <label for="cat9">Comedy</label>
-            </div>
-        </div>
-
-        <h3 class="section-title">Description Section</h3>
-        <textarea name="description" placeholder="Write book description here..." required></textarea>
-
-        <h3 class="section-title">Upload The Cover Page</h3>
-
-        <div class="input-group">
-            <label for="file">Upload the book cover: </label>
-            <input id="file" type="file" name="file" accept="image/*" required>
-            <img id="view" src="" alt="Cover view" >
-        </div>
-
-        <div class="form-actions">
-            <input type="submit" value="Add Book" class="btn-submit">
-            <input type="Reset" value="Reset" class="btn-reset">
-        </div>
-
-        
-    </form>
-</div>
-
-    <br>
-<br>
-<br>
-
-<div class="container">
-
-    <div class="footer">
-
-        <div class="social">
-            <div class="card">
-
-                <a href="https://www.facebook.com/share/1NTinaAZPG/" target="_blank">
-                    <img src="Picture/Face.webp" alt="Facebook Link">
-                </a>
-            </div>
-            <div class="card">
-
-                <a href="#" target="_blank">
-                    <img src="Picture/Instgram.webp" alt="Instagram Link">
-                </a>
-            </div>
-            <div class="card">
-
-                <a href="https://wa.me/201146310227" target="_blank">
-                    <img src="Picture/what'sapp.png" alt=" What's app  Link">
-                </a>
-            </div>
-        </div>
-        <div class="rights">
-            <p>
-                Za3bola Reads is optimized for learning and training. Examples might be simplified to improve reading and learning.
-                Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness
-                of all content.
-                <br/>While using Za3bola Reads, you agree to have read and accepted our terms of use, cookies and privacy policy.
-            </p>
-            <h5>
-                Copyright 1901-2090 by Refsnes Data. All Rights Reserved. Za3bola Reads is Powered by A.4M.k.
-            </h5>
-        </div>
+        </form>
     </div>
-</div>
 
-<script src="add.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <br><br><br>
 
+    {% include "footer.html" %}
+
+    <script src="{% static 'add.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
 </html>

@@ -1,36 +1,31 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Books | Za3bola Reads</title>
-    <link rel="stylesheet" href="{%static 'availble_books.css' %}">
+    <link rel="stylesheet" href="{% static 'availble_books.css' %}">
 </head>
 <body>
-
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="main.html">
-                    <img src="{%static 'Picture/ddfgd.png' %}" alt="logo">
+                <a href="/main/">
+                    <img src="{% static 'Picture/ddfgd.png' %}" alt="logo">
                 </a>
-            </div>  
-
+            </div>
             <div class="search">
                 <form action="" method="GET">
                     <input id="search_box" class="search-input" type="search" name="search" placeholder="Search books...">
                     <button type="submit">Search</button>
                 </form>
             </div>
-            
             <div class="nav-links">
-                
-                <a href="{% url 'available_books_user' %}" class="active">Browse Books</a>
-                <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
-                <a href="{% url 'MainPage' %}">Log out</a>
+                <a href="/available_books_user/" class="active">Browse Books</a>
+                <a href="/borrowed_books/">My Borrowed Books</a>
+                <a href="/MainPage/">Log out</a>
             </div>
-            
         </nav>
     </header>
 
@@ -38,11 +33,9 @@
         <h3>Available Books</h3>
     </div>
 
-    <div class="books-grid" id="booksContainer">
-    </div>
+    <div class="books-grid" id="booksContainer"></div>
 
-    {%include "footer.html" %}
-    
-    <script src="{%static 'available_bools.js' %}"></script>
+    {% include "footer.html" %}
+    <script src="{% static 'available_bools.js' %}"></script>
 </body>
 </html>

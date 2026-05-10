@@ -1,52 +1,39 @@
-{%load static%}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            Library-Main page
-        </title>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel = "stylesheet" href = "{%static 'MainPage.css'%}">
-    </head>    
-
-    <body>
+<head>
+    {% load static %}
+    <title>Library-Main page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'MainPage.css' %}">
+</head>
+<body>
     <nav>
         <ul>
-<!--            <li><a href="#">Browse Books</a></li>-->
-<!--            <li><a href="#">My Borrowed Books</a></li>-->
-<!--            <li><a href="#">Admin Dashboard</a></li>-->
-           <li> <a href="/Login/" id="Login1">Sign in</a></li>
-          <li><a href="/CAACC/" id="Login2">Sign Up</a></li>
+            <li><a href="/login/" id="Login1">Sign in</a></li>
+            <li><a href="/signup/" id="Login2">Sign Up</a></li>
         </ul>
     </nav>
 
     <div class="hero-section">
         <div class="leftside">
             <div class="title-line"></div>
-            <div class="quote-decor">“</div>
+            <div class="quote-decor">"</div>
             <div class="corner-decor"></div>
             <div class="side-word">ARCHIVES</div>
-
             <h1 id="leftH">Library of Timeless Wisdom</h1>
             <p id="leftP">
-                “Welcome, seeker of wisdom, to a treasury of timeless knowledge, where the voices
+                "Welcome, seeker of wisdom, to a treasury of timeless knowledge, where the voices
                 of ages past whisper through every page. Within these digital halls lie chronicles,
                 poems, teachings, and tales gathered from many realms of thought. Enter freely, wander
                 boldly, and uncover the riches of learning,
-                for here the lamp of knowledge is ever lit.”
+                for here the lamp of knowledge is ever lit."
             </p>
-
-            <div class="auth-links">
-
-            </div>
+            <div class="auth-links"></div>
         </div>
-
         <div class="rightside"></div>
     </div>
 
-
-
-    {%include "footer.html"%}
-    <script src="{%static 'MainPage.js'%}" ></script>
+    {% include "footer.html" %}
+    <script src="{% static 'MainPage.js' %}"></script>
 </body>
 </html>

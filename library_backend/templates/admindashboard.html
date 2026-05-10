@@ -1,81 +1,51 @@
-{%load static%}
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+
 <title>Admin Dashboard</title>
     <!-- <link rel="stylesheet" href="main.css"> -->
     <link rel="stylesheet" href="{% static 'admindashboard.css' %}">
     
 
+
 </head>
-
 <body>
-
-<!-- 
-<div class="nav">
-
-    <div class="logo">
-        <a href="main.html">
-            <img src="Picture/Untitled design.png" alt="logo">
-              <img src="Untitled design.png" alt="logo"> 
-        </a>
-    </div>
-
-<div class="search">
-    <form id="searchForm">
-        <label for="search_box">Search: </label>
-        <input id="search_box" type="search" name="search" placeholder="Title, author, category...">
-        <button type="submit">Search</button>
-    </form>
-</div>
-
-    <div class="links">
-        <ul>
-            <li><a href="add.html">Add book </a></li>
-            <li><a href="available_books_user.html">Browse Books</a></li>
-            <li><a href="borrowed%20books.html">My Borrowed Books</a></li>
-           
-            <li> <a href="main.html">Log out</a></li>
-        </ul>
-    </div>
-</div>  -->
-
- <header>
+    <header>
         <nav class="navbar">
             <div class="logo">
                 <a href="/adminhome/">
-               <img src="{% static 'Picture/ddfgd.png' %}" alt="logo"> 
-                </a>
-            </div>  
 
+               <img src="{% static 'Picture/ddfgd.png' %}" alt="logo"> 
+
+  
+                </a>
+            </div>
             <div class="search">
                 <form action="" method="GET">
                     <input id="search_box" class="search-input" type="search" name="search" placeholder="Search books...">
                     <button type="submit">Search</button>
                 </form>
             </div>
+
             
             <div class="nav-links">
-               
                 <a href="/add/">Add book</a>
                 <a href="/admindashboard/" class="active">Admin Dashboard</a>
                 <a href="/available_book_admin/">Browse Books</a>
                 <a href="/login/">Log out</a> 
+
             </div>
-            
         </nav>
     </header>
 
-
-<h1>Admin Dashboard</h1>
-<p>
-This dashboard allows the administrator to manage the library system. 
-The admin can view all books, add new books, update existing book details, 
-and remove books from the library to keep the collection organized and up to date.
-</p>
-
-<br>
+    <h1>Admin Dashboard</h1>
+    <p>
+        This dashboard allows the administrator to manage the library system.
+        The admin can view all books, add new books, update existing book details,
+        and remove books from the library to keep the collection organized and up to date.
+    </p>
 
 <!-- Add Book Button -->
 <!-- <button id="addBook">Add Book</button> -->
@@ -130,8 +100,11 @@ and remove books from the library to keep the collection organized and up to dat
 </tbody>
 </table>
 
+
+    <script src="{% static 'admindashboard.js' %}" defer></script>
 </body>
 
-<script src="{% static 'admindashboard.js'%}" defer></script>
-
 </html>
+
+
+
