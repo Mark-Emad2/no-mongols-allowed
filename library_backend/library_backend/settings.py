@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'MainPage',
+    'admindashboard',
+    
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 import os
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_URL = '/static/'
+
+
+# media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
