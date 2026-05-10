@@ -1,33 +1,26 @@
-{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Reset Password</title>
-    {% load static %}
-<link rel="stylesheet" href="{% static 'ResetThePass.css' %}">
+    <link rel="stylesheet" href="{% static 'ResetThePass.css' %}">
 </head>
 <body>
-
 <div class="container">
-
     <div class="image">
-       <img src="{% static 'Picture/Reset.jpg' %}">
+        <img src="{% static 'Picture/Reset.jpg' %}">
     </div>
-
-    <div class="text" id = 'text'>
+    <div class="text" id="text">
         <h2>Reset Password</h2>
-        <p>We 'll email you a link to reset your Password.</p>
-        <form action="/Login/" method="post" id="resetPassForm">
-
+        <p>We'll email you a link to reset your Password.</p>
+        <form id="resetPassForm">
             <input type="email" placeholder="✉ Email" name="email" required id="email">
             <p id="message"></p>
             <button type="submit">Send an email</button>
         </form>
-
-        <a href="/login/">  Go back to Login</a>
+        <a href="/login/">Go back to Login</a>
     </div>
-
 </div>
 <script src="{% static 'ResetThePass.js' %}"></script>
 </body>
