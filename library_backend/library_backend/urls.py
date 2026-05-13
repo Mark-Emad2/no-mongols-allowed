@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from accounts import views as page_views
+from MainPage import views as main_views
 
 from accounts import views as v
 
@@ -36,7 +37,13 @@ urlpatterns = [
     path('available_book_admin/', v.available_book_admin, name='available_book_admin'),
     path('add/',                  v.add_book,            name='add'),
     path('book_details_admin/',   v.book_details_admin,  name='book_details_admin'),
+    #--------------
+    path('api/books/', main_views.api_books_list, name='api_books_list'),
+    path('api/book/<int:book_id>/', main_views.api_book_detail, name='api_book_detail'),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
