@@ -1,6 +1,27 @@
-function loadBooks() {
-    let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
-    displayBooks(borrowed_books);
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+async function loadBooks() {
+    try {
+        const response = await fetch('/api/borrowed-books/');
+        const books = await response.json();
+        displayBooks(books);
+    } catch (error) {
+        console.error('Error loading books:', error);
+        displayBooks([]);
+    }
 }
 
 function displayBooks(borrowed_books) {
@@ -11,6 +32,8 @@ function displayBooks(borrowed_books) {
                 "<h3>No Borrowed Books</h3>" +
                 "<p>You haven't borrowed any books yet. Go browse some!</p>" +
             "</div>";
+        updateCount(0);
+        document.getElementById('returnall').disabled = true;
         return;
     }
 
@@ -18,23 +41,24 @@ function displayBooks(borrowed_books) {
     borrowed_books.forEach(book => {
         let book_card = `
         <div class="book_card" 
-             data-book-id="${book.id}" 
-             data-book-title="${book.title}" 
-             data-book-author="${book.author}" 
+             data-book-id="${book.book_id}" 
+             data-book-title="${escapeHtml(book.title)}" 
+             data-book-author="${escapeHtml(book.author)}" 
              data-book-cover="${book.cover}" 
-             data-original-id="${book.originalBookId}">
+             data-original-id="${book.book_id}">
             <div class="card_content">
                 <div class="cover">
                     <img src="${book.cover || ''}" onerror="this.src=''">
                 </div>
                 <div class="info">
-                    <h3>${book.title}</h3>
-                    <div class="author">by ${book.author}</div>
+                    <h3>${escapeHtml(book.title)}</h3>
+                    <div class="author">by ${escapeHtml(book.author)}</div>
                     <div class="date_info">
                         <p><strong>Borrowed:</strong> ${formatDate(book.borrowedDate)}</p>
+                        <p><strong>Due:</strong> ${formatDate(book.dueDate)}</p>
                     </div>
                     <div class="return">
-                        <button class='return_button' onclick="event.stopPropagation(); returnBook(${book.id}, '${book.title.replace(/'/g, "\\'")}')">Return Book</button>
+                        <button class='return_button' data-borrow-id="${book.id}" data-book-title="${escapeHtml(book.title)}">Return Book</button>
                     </div>
                 </div>
             </div>
@@ -46,73 +70,73 @@ function displayBooks(borrowed_books) {
     document.querySelectorAll('.book_card').forEach(card => {
         card.addEventListener('click', function(e) {
             if (e.target.classList.contains('return_button')) return;
-            const bookTitle  = this.dataset.bookTitle;
-            const bookAuthor = this.dataset.bookAuthor;
-            const bookCover  = this.dataset.bookCover;
-            redirectToBookDetails(bookTitle, bookAuthor, bookCover);
+            const bookId = this.dataset.bookId;
+            if (bookId) {
+                window.location.href = `/book_details/?id=${bookId}`;
+            }
         });
     });
 
-    updateCount(borrowed_books.length);
-}
-
-function redirectToBookDetails(title, author, cover) {
-    const allBooks = JSON.parse(localStorage.getItem('books')) || [];
-    const foundBook = allBooks.find(book => book.name === title && book.author === author);
-
-    if (foundBook) {
-        window.location.href = `/book_details/?id=${foundBook.id}`;
-    } else {
-        localStorage.setItem('selectedBook', JSON.stringify({
-            title: title,
-            author: author,
-            cover: cover,
-            fromBorrowed: true
-        }));
-        window.location.href = '/available_books_user/';
-    }
-}
-
-function returnBook(book_id, bookTitle) {
-    let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
-    let book_return = borrowed_books.find(book => book.id === book_id);
-
-    if (book_return && confirm(`Return "${bookTitle}"?`)) {
-        borrowed_books = borrowed_books.filter(book => book.id !== book_id);
-        localStorage.setItem('borrowedBooks', JSON.stringify(borrowed_books));
-
-        let books = JSON.parse(localStorage.getItem('books')) || [];
-        books = books.map(book => {
-            if (book.name === bookTitle) {
-                return { ...book, available: true };
+    document.querySelectorAll('.return_button').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const borrowId = btn.dataset.borrowId;
+            const bookTitle = btn.dataset.bookTitle;
+            
+            if (confirm(`Return "${bookTitle}"?`)) {
+                const response = await fetch(`/api/return-book/${borrowId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken'),
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                alert(data.message);
+                if (data.success) loadBooks();
             }
-            return book;
         });
-        localStorage.setItem('books', JSON.stringify(books));
-
-        loadBooks();
-    }
+    });
+    
+    updateCount(borrowed_books.length); 
+    document.getElementById('returnall').disabled = false;
 }
 
-function returnAllBooks() {
-    let borrowed_books = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
-    if (borrowed_books.length > 0 && confirm(`Return all ${borrowed_books.length} borrowed books?`)) {
-        let books = JSON.parse(localStorage.getItem('books')) || [];
-        borrowed_books.forEach(borrowedBook => {
-            books = books.map(book => {
-                if (book.name === borrowedBook.title) {
-                    return { ...book, available: true };
-                }
-                return book;
-            });
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
+async function returnAllBooks() {
+    const response = await fetch('/api/borrowed-books/');
+    const books = await response.json();
+    
+    if (books.length === 0) {
+        alert('No books to return');
+        return;
+    }
+    
+    if (confirm(`Return all ${books.length} books?`)) {
+        const result = await fetch('/api/return-all-books/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'Content-Type': 'application/json'
+            }
         });
-        localStorage.setItem('books', JSON.stringify(books));
-        localStorage.removeItem('borrowedBooks');
-        loadBooks();
+        const data = await result.json();
+        alert(data.message);
+        if (data.success) loadBooks();
     }
 }
 
 function formatDate(dateString) {
+    if (!dateString) return 'Unknown';
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
 }
@@ -133,4 +157,5 @@ function updateCount(count) {
     }
 }
 
+document.getElementById('returnall')?.addEventListener('click', returnAllBooks);
 loadBooks();
