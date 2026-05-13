@@ -27,8 +27,8 @@
         <h2>Add New Book</h2>
         <a href="/admindashboard/" class="btn-back">Back to Dashboard</a>
 
-        <form action="" method="Post">
-            <h3 class="section-title">Info</h3>
+        <form action="{% url 'add_book' %}" method="POST" enctype="multipart/form-data">            <h3 class="section-title">Info</h3>
+            {% csrf_token %} <!--  more security -->
 
             <div class="input-group">
                 <label for="id_b">ID: </label>
@@ -95,5 +95,18 @@
 
     <script src="{% static 'add.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if success %}``   <!-- عشان لما الحاجه تتضاف فى الداتا بيز تظهرلى الرساله-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                title: "Success!",
+                text: "The Book has been successfully saved to the Database!",
+                icon: "success",
+                confirmButtonColor: "#B85C38" 
+            });
+        });
+    </script>
+    {% endif %}
 </body>
 </html>
