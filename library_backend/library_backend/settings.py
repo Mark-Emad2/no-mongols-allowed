@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'MainPage',
     'admindashboard',
+    'borrowed_books',
     
 ]
 
