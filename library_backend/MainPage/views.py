@@ -1,10 +1,10 @@
-from django.shortcuts import render
-
-
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from datetime import date, timedelta
 from admindashboard.models import Book
-from borrowed_books.models import borrwedBooks # خد بالك من اسم الموديل بتاع زميلك
+from borrowed_books.models import borrwedBooks  # ← FIXED: Import from borrowed_books
 
 def api_books_list(request):
     books = Book.objects.all()
@@ -17,17 +17,16 @@ def api_books_list(request):
             'name': b.name,
             'author': b.author,
             'cover': b.cover.url if b.cover else '',
-            'aboutAuthor': b.about_author,
-            'desc': b.description,
-            'available': b.id not in borrowed_ids, # المنطق اللي أنت عاوزه
+            'aboutAuthor': getattr(b, 'about_author', ''),
+            'desc': getattr(b, 'description', 'No description'),
+            'available': b.id not in borrowed_ids,
             'category': b.category,
-            'amazonLink': b.amazon_link,
+            'amazonLink': getattr(b, 'amazon_link', ''),
             'language': b.language,
             'date': str(b.release_date) if b.release_date else ''
         })
     return JsonResponse(data, safe=False)
 
-# 2. API بيجيب تفاصيل كتاب واحد بالـ ID
 def api_book_detail(request, book_id):
     try:
         b = Book.objects.get(id=book_id)
@@ -38,11 +37,11 @@ def api_book_detail(request, book_id):
             'name': b.name,
             'author': b.author,
             'cover': b.cover.url if b.cover else '',
-            'aboutAuthor': b.about_author,
-            'desc': b.description,
+            'aboutAuthor': getattr(b, 'about_author', ''),
+            'desc': getattr(b, 'description', 'No description'),
             'available': not is_borrowed,
             'category': b.category,
-            'amazonLink': b.amazon_link,
+            'amazonLink': getattr(b, 'amazon_link', ''),
             'language': b.language,
             'date': str(b.release_date) if b.release_date else ''
         })
@@ -57,3 +56,28 @@ def available_books_user(request):
 
 def borrowed_books(request):
     return render(request, 'borrowed_books.html')
+
+@csrf_exempt
+def api_borrow_book(request, book_id):
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'message': 'Invalid method'}, status=400)
+    
+    book = get_object_or_404(Book, id=book_id)
+    
+    # Check if available
+    is_borrowed = borrwedBooks.objects.filter(book=book, returned=False).exists()
+    if is_borrowed:
+        return JsonResponse({'success': False, 'message': 'This book is already borrowed'})
+    
+    # Create borrow record
+    borrwedBooks.objects.create(
+        user=request.user,
+        book=book,
+        due_date=date.today() + timedelta(days=14)
+    )
+    
+    # Mark book as unavailable
+    book.available = False
+    book.save()
+    
+    return JsonResponse({'success': True, 'message': f'Successfully borrowed "{book.name}"!'})

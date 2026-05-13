@@ -3,17 +3,16 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from admindashboard.models import Book
-from .models import BorrowedBook
+from .models import borrwedBooks
 from datetime import date, timedelta
 
-# Create your views here.
 @login_required
-def borrowed_ooks_page(request):
+def borrowed_books_page(request):
     return render(request, 'borrowed_books.html')
 
 @login_required
 def api_borrowed_books(request):
-    borrowed_books = BorrowedBook.objects.filter(
+    borrowed_books = borrwedBooks.objects.filter(
         user=request.user, returned=False
     ).select_related('book')
     
@@ -32,30 +31,32 @@ def api_borrowed_books(request):
 
 @login_required
 @csrf_exempt
-
 def api_return_book(request, borrow_id):
     if request.method != 'POST':
         return JsonResponse({'success': False, 'message': 'Invalid method'}, status=400)
     
-    borrow=get_object_or_404(BorrowedBook, id=borrow_id, user=request.user)
-    book=borrow.book
+    borrow = get_object_or_404(borrwedBooks, id=borrow_id, user=request.user)
+    book = borrow.book
 
     borrow.returned = True
     borrow.save()
 
-    book.available=True
-    book.saved
+    book.available = True
+    book.save()
 
     return JsonResponse({'success': True, 'message': f'Returned "{book.name}"'})
 
 @login_required
 @csrf_exempt
-def api_return_all(request):
+def api_return_all_books(request):
     if request.method != 'POST':
         return JsonResponse({'success': False, 'message': 'Invalid method'}, status=400)
     
-    active = BorrowedBook.objects.filter(user=request.user, returned=False)
+    active = borrwedBooks.objects.filter(user=request.user, returned=False)
     count = active.count()
+
+    if count == 0:
+        return JsonResponse({'success': False, 'message': 'No books to return'})
 
     for borrow in active:
         book = borrow.book
