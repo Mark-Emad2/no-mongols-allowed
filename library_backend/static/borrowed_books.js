@@ -114,29 +114,41 @@ function escapeHtml(str) {
 }
 
 async function returnAllBooks() {
-    // جلب عدد الكتب الحالي للتأكيد
-    const response = await fetch('/api/borrowed-books/', {
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    const books = await response.json();
+    // Check if already processing to prevent double calls
+    if (window.returningAll) return;
+    window.returningAll = true;
     
-    if (books.length === 0) {
-        alert('No books to return');
-        return;
-    }
-    
-    if (confirm(`Return all ${books.length} books?`)) {
-        const result = await fetch('/api/return-all-books/', {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': getCookie('csrftoken'),
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            }
+    try {
+        // Get current books count
+        const response = await fetch('/api/borrowed-books/', {
+            headers: { 'Authorization': 'Bearer ' + token }
         });
-        const data = await result.json();
-        alert(data.message);
-        if (data.success) loadBooks();
+        const books = await response.json();
+        
+        if (books.length === 0) {
+            alert('No books to return');
+            window.returningAll = false;
+            return;
+        }
+        
+        if (confirm(`Return all ${books.length} books?`)) {
+            const result = await fetch('/api/return-all-books/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            const data = await result.json();
+            alert(data.message);
+            if (data.success) loadBooks();
+        }
+    } catch (error) {
+        console.error('Error returning all books:', error);
+        alert('An error occurred');
+    } finally {
+        window.returningAll = false;
     }
 }
 
