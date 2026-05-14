@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('bookLang').innerText = kitab.language || "N/A";
 
             const borrowBtn = document.getElementById('borrowBtn');
+            
             if (borrowBtn) {
                 borrowBtn.dataset.bookId = bookId;
                 
@@ -69,12 +70,10 @@ function getCookie(name) {
     return cookieValue;
 }
 
-// Borrow button handler with better error logging
+// Borrow button handler
 document.getElementById('borrowBtn')?.addEventListener('click', async function() {
     const bookId = this.dataset.bookId;
-    
-    console.log('Book ID:', bookId);
-    console.log('CSRF Token:', getCookie('csrftoken'));
+    const token = localStorage.getItem('access_token'); // جلب التوكن من التخزين المحلي
     
     if (!bookId) {
         alert('Invalid book ID');
@@ -83,30 +82,30 @@ document.getElementById('borrowBtn')?.addEventListener('click', async function()
     
     try {
         const url = `/api/borrow-book/${bookId}/`;
-        console.log('Fetching URL:', url);
         
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // السطر الأهم لإرسال الهوية للسيرفر
+                'Authorization': 'Bearer ' + token 
             }
         });
         
-        console.log('Response status:', response.status);
-        console.log('Response OK?', response.ok);
-        
+        // محاولة قراءة الـ JSON من السيرفر
         const data = await response.json();
-        console.log('Response data:', data);
         
-        if (data.success) {
+        if (response.ok && data.success) {
             alert(data.message);
             window.location.href = '/borrowed_books/';
         } else {
-            alert(data.message);
+            // عرض رسالة الخطأ الحقيقية اللي جاية من السيرفر (زي Token not valid أو Please login)
+            const errorMsg = data.message || data.detail || "Error: Please check if you are logged in correctly.";
+            alert(errorMsg);
         }
     } catch (error) {
         console.error('Error details:', error);
-        alert(`Error: ${error.message}`);
+        alert("Server error. Please make sure the backend is running and you are logged in.");
     }
 });

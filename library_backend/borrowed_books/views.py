@@ -1,68 +1,52 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from admindashboard.models import Book
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 from .models import borrwedBooks
-from datetime import date, timedelta
 
-@login_required
+# عرض صفحة الـ HTML
 def borrowed_books_page(request):
     return render(request, 'borrowed_books.html')
 
-@login_required
+# API لجلب الكتب المستعارة (لازم نبعت التوكن)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def api_borrowed_books(request):
-    borrowed_books = borrwedBooks.objects.filter(
-        user=request.user, returned=False
-    ).select_related('book')
-    
+    borrowed = borrwedBooks.objects.filter(user=request.user, returned=False).select_related('book')
     data = []
-    for borrow in borrowed_books:
+    for b in borrowed:
         data.append({
-            'id': borrow.id,
-            'book_id': borrow.book.id,
-            'title': borrow.book.name,
-            'author': borrow.book.author,
-            'cover': borrow.book.cover.url if borrow.book.cover else '',
-            'borrowedDate': borrow.borrowed_date.strftime('%Y-%m-%d'),
-            'dueDate': borrow.due_date.strftime('%Y-%m-%d'),
+            'id': b.id,
+            'book_id': b.book.id,
+            'title': b.book.name,
+            'author': b.book.author,
+            'cover': b.book.cover.url if b.book.cover else '',
+            'borrowedDate': b.borrowed_date.strftime('%Y-%m-%d'),
+            'dueDate': b.due_date.strftime('%Y-%m-%d'),
         })
-    return JsonResponse(data, safe=False)
+    return Response(data)
 
-@login_required
-@csrf_exempt
+# API لإرجاع كتاب (هنا المشكلة اتحلت)
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def api_return_book(request, borrow_id):
-    if request.method != 'POST':
-        return JsonResponse({'success': False, 'message': 'Invalid method'}, status=400)
-    
     borrow = get_object_or_404(borrwedBooks, id=borrow_id, user=request.user)
-    book = borrow.book
-
+    
+    # بنغير حالة الاستعارة بس
     borrow.returned = True
     borrow.save()
+    
+    # مش بنغير حاجة في موديل Book لأن مفيش حقل available
+    return Response({'success': True, 'message': f'Returned "{borrow.book.name}" successfully!'})
 
-    book.available = True
-    book.save()
-
-    return JsonResponse({'success': True, 'message': f'Returned "{book.name}"'})
-
-@login_required
-@csrf_exempt
+# API لإرجاع الكل
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def api_return_all_books(request):
-    if request.method != 'POST':
-        return JsonResponse({'success': False, 'message': 'Invalid method'}, status=400)
-    
     active = borrwedBooks.objects.filter(user=request.user, returned=False)
-    count = active.count()
-
-    if count == 0:
-        return JsonResponse({'success': False, 'message': 'No books to return'})
-
-    for borrow in active:
-        book = borrow.book
-        book.available = True
-        book.save()
-        borrow.returned = True
-        borrow.save()
+    if not active.exists():
+        return Response({'success': False, 'message': 'No books to return'}, status=400)
     
-    return JsonResponse({'success': True, 'message': f'Returned {count} book(s)'})
+    active.update(returned=True)
+    return Response({'success': True, 'message': 'All books returned successfully!'})

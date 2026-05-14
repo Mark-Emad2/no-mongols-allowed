@@ -1,3 +1,5 @@
+const token = localStorage.getItem('access_token');
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -15,7 +17,9 @@ function getCookie(name) {
 
 async function loadBooks() {
     try {
-        const response = await fetch('/api/borrowed-books/');
+        const response = await fetch('/api/borrowed-books/', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
         const books = await response.json();
         displayBooks(books);
     } catch (error) {
@@ -26,14 +30,15 @@ async function loadBooks() {
 
 function displayBooks(borrowed_books) {
     let storage = document.getElementById('Container');
-    if (borrowed_books.length === 0) {
+    if (!borrowed_books || borrowed_books.length === 0) {
         storage.innerHTML =
             "<div class='empty-state'>" +
                 "<h3>No Borrowed Books</h3>" +
                 "<p>You haven't borrowed any books yet. Go browse some!</p>" +
             "</div>";
         updateCount(0);
-        document.getElementById('returnall').disabled = true;
+        const returnAllBtn = document.getElementById('returnall');
+        if (returnAllBtn) returnAllBtn.disabled = true;
         return;
     }
 
@@ -67,13 +72,12 @@ function displayBooks(borrowed_books) {
         storage.innerHTML += book_card;
     });
 
+    // أحداث الكليك على كروت الكتب والزراير
     document.querySelectorAll('.book_card').forEach(card => {
         card.addEventListener('click', function(e) {
             if (e.target.classList.contains('return_button')) return;
             const bookId = this.dataset.bookId;
-            if (bookId) {
-                window.location.href = `/book_details/?id=${bookId}`;
-            }
+            if (bookId) window.location.href = `/book_details/?id=${bookId}`;
         });
     });
 
@@ -88,7 +92,8 @@ function displayBooks(borrowed_books) {
                     method: 'POST',
                     headers: {
                         'X-CSRFToken': getCookie('csrftoken'),
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
                     }
                 });
                 const data = await response.json();
@@ -99,21 +104,20 @@ function displayBooks(borrowed_books) {
     });
     
     updateCount(borrowed_books.length); 
-    document.getElementById('returnall').disabled = false;
+    const returnAllBtn = document.getElementById('returnall');
+    if (returnAllBtn) returnAllBtn.disabled = false;
 }
 
 function escapeHtml(str) {
     if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-        if (m === '&') return '&amp;';
-        if (m === '<') return '&lt;';
-        if (m === '>') return '&gt;';
-        return m;
-    });
+    return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m] || m));
 }
 
 async function returnAllBooks() {
-    const response = await fetch('/api/borrowed-books/');
+    // جلب عدد الكتب الحالي للتأكيد
+    const response = await fetch('/api/borrowed-books/', {
+        headers: { 'Authorization': 'Bearer ' + token }
+    });
     const books = await response.json();
     
     if (books.length === 0) {
@@ -126,7 +130,8 @@ async function returnAllBooks() {
             method: 'POST',
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             }
         });
         const data = await result.json();

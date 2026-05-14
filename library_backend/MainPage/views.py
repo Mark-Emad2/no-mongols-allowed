@@ -5,7 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from datetime import date, timedelta
 from admindashboard.models import Book
 from borrowed_books.models import borrwedBooks  # ← FIXED: Import from borrowed_books
-
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from datetime import date, timedelta
+from borrowed_books.models import borrwedBooks
+from admindashboard.models import Book
 def api_books_list(request):
     books = Book.objects.all()
     borrowed_ids = borrwedBooks.objects.filter(returned=False).values_list('book_id', flat=True)
@@ -57,6 +62,8 @@ def available_books_user(request):
 def borrowed_books(request):
     return render(request, 'borrowed_books.html')
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 @csrf_exempt
 def api_borrow_book(request, book_id):
     if request.method != 'POST':
@@ -64,20 +71,16 @@ def api_borrow_book(request, book_id):
     
     book = get_object_or_404(Book, id=book_id)
     
-    # Check if available
+    # التأكد إن الكتاب مش مستعار "حالياً" (يعني فيه سجل returned بتاعه False)
     is_borrowed = borrwedBooks.objects.filter(book=book, returned=False).exists()
     if is_borrowed:
         return JsonResponse({'success': False, 'message': 'This book is already borrowed'})
     
-    # Create borrow record
+    # لو مش مستعار، بنسجل استعارة جديدة
     borrwedBooks.objects.create(
         user=request.user,
         book=book,
-        due_date=date.today() + timedelta(days=14)
+        # الـ due_date هيتحسب لوحده من الـ save method في الموديل
     )
     
-    # Mark book as unavailable
-    book.available = False
-    book.save()
-    
-    return JsonResponse({'success': True, 'message': f'Successfully borrowed "{book.name}"!'})
+    return JsonResponse({'success': True, 'message': 'Book borrowed successfully!'})
