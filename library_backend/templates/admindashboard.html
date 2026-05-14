@@ -85,7 +85,8 @@
         <td><strong>{{ book.name }}</strong></td>
         <td>{{ book.author }}</td>
         <td>{{ book.category }}</td>
-        <td>{{ book.release_date|date:"Y-m-d" }}</td>
+        {% comment %} <td>{{ book.release_date|date:"Y-m-d" }}</td> {% endcomment %}
+        <td>{{ book.release_date }}</td>
         <td>{{ book.language }}</td>
         <td>
             
