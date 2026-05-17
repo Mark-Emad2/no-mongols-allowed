@@ -107,10 +107,6 @@ header {
     padding: 50px;
 }
 
-
-
-
-
 .image-section{
     display: flex;
     flex-direction: column;
@@ -121,19 +117,36 @@ header {
     
 }
 .btn-borrow {
-    text-decoration: none;
-    background-color: #361E15;
+    background-color: #B85C38 !important;
     padding: 12px 35px;
     border-radius: 50px;
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
-    transition: background 0.3s;
-    margin-top: auto;
-    width: auto;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
 }
+.btn-borrow:hover:not(:disabled) {
+    background-color: #2D2424 !important;
+    transform: scale(1.02);
+}
+
+.btn-borrow:disabled,
+.btn-borrow:disabled:hover {
+    background-color: #ccc !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    opacity: 0.7;
+}
+
+.btn-borrow:focus,
+.btn-borrow:active {
+    outline: none;
+    background-color: #B85C38;
+}
+
 
 .btn-borrow:hover {
     background-color: #1a0f0a;
