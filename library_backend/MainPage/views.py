@@ -71,18 +71,15 @@ def api_borrow_book(request, book_id):
     
     book = get_object_or_404(Book, id=book_id)
     
-    # التأكد إن الكتاب مش مستعار "حالياً" (يعني فيه سجل returned بتاعه False)
     is_borrowed = borrwedBooks.objects.filter(book=book, returned=False).exists()
     if is_borrowed:
         return JsonResponse({'success': False, 'message': 'This book is already borrowed'})
     active_count = borrwedBooks.objects.filter(user=request.user, returned=False).count()
     if active_count >= 2:
         return JsonResponse({'success': False, 'message': 'You can only borrow 2 books at a time'})
-    # لو مش مستعار، بنسجل استعارة جديدة
     borrwedBooks.objects.create(
         user=request.user,
         book=book,
-        # الـ due_date هيتحسب لوحده من الـ save method في الموديل
     )
     
     

@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// CSRF token helper
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -70,7 +69,6 @@ function getCookie(name) {
     return cookieValue;
 }
 
-// Borrow button handler
 document.getElementById('borrowBtn')?.addEventListener('click', async function() {
     const bookId = this.dataset.bookId;
     const token = localStorage.getItem('access_token'); // جلب التوكن من التخزين المحلي
@@ -88,19 +86,15 @@ document.getElementById('borrowBtn')?.addEventListener('click', async function()
             headers: {
                 'X-CSRFToken': getCookie('csrftoken'),
                 'Content-Type': 'application/json',
-                // السطر الأهم لإرسال الهوية للسيرفر
                 'Authorization': 'Bearer ' + token 
             }
         });
-        
-        // محاولة قراءة الـ JSON من السيرفر
         const data = await response.json();
         
         if (response.ok && data.success) {
             alert(data.message);
             window.location.href = '/borrowed_books/';
         } else {
-            // عرض رسالة الخطأ الحقيقية اللي جاية من السيرفر (زي Token not valid أو Please login)
             const errorMsg = data.message || data.detail || "Error: Please check if you are logged in correctly.";
             alert(errorMsg);
         }

@@ -72,7 +72,6 @@ function displayBooks(borrowed_books) {
         storage.innerHTML += book_card;
     });
 
-    // أحداث الكليك على كروت الكتب والزراير
     document.querySelectorAll('.book_card').forEach(card => {
         card.addEventListener('click', function(e) {
             if (e.target.classList.contains('return_button')) return;
@@ -114,12 +113,10 @@ function escapeHtml(str) {
 }
 
 async function returnAllBooks() {
-    // Check if already processing to prevent double calls
     if (window.returningAll) return;
     window.returningAll = true;
     
     try {
-        // Get current books count
         const response = await fetch('/api/borrowed-books/', {
             headers: { 'Authorization': 'Bearer ' + token }
         });

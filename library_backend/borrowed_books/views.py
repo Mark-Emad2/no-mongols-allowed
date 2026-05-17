@@ -5,11 +5,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import borrwedBooks
 
-# عرض صفحة الـ HTML
 def borrowed_books_page(request):
     return render(request, 'borrowed_books.html')
 
-# API لجلب الكتب المستعارة (لازم نبعت التوكن)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def api_borrowed_books(request):
@@ -27,20 +25,16 @@ def api_borrowed_books(request):
         })
     return Response(data)
 
-# API لإرجاع كتاب (هنا المشكلة اتحلت)
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def api_return_book(request, borrow_id):
     borrow = get_object_or_404(borrwedBooks, id=borrow_id, user=request.user)
     
-    # بنغير حالة الاستعارة بس
     borrow.returned = True
     borrow.save()
     
-    # مش بنغير حاجة في موديل Book لأن مفيش حقل available
     return Response({'success': True, 'message': f'Returned "{borrow.book.name}" successfully!'})
 
-# API لإرجاع الكل
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def api_return_all_books(request):
