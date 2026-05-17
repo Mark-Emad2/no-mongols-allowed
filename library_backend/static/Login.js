@@ -24,9 +24,9 @@ loginForm.addEventListener('submit', async (e) => {
 
             // Django tells us if the user is admin — no JS secret needed
            if (data.is_admin) {
-                 window.location.href = 'AdminMain.html';
+                window.location.href = '/adminhome/';
             } else {
-                window.location.href = 'main.html'; 
+                window.location.href = '/main/';
                 }
 
         } else {

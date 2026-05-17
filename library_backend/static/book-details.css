@@ -120,10 +120,9 @@ header {
     align-items: center;
     
 }
-.btn-borrow{
-    
+.btn-borrow {
     text-decoration: none;
-    background-color: #B85C38;
+    background-color: #361E15;
     padding: 12px 35px;
     border-radius: 50px;
     color: #fff;
@@ -131,9 +130,14 @@ header {
     font-weight: 600;
     transition: background 0.3s;
     margin-top: auto;
-    /* align-self: center; */
-    width:auto;
-    /* margin: 5px 0px; */
+    width: auto;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-borrow:hover {
+    background-color: #1a0f0a;
+    transform: scale(1.02);
 }
 .btn-buy{
     
@@ -151,10 +155,6 @@ header {
     /* margin: 5px 0px; */
 }
 .btn-buy:hover {
-    background-color: #2D2424;
-    transform: scale(1.02);
-}
-.btn-borrow:hover {
     background-color: #2D2424;
     transform: scale(1.02);
 }

@@ -1,80 +1,51 @@
-{%load static%}
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <meta charset="UTF-8">
+
 <title>Admin Dashboard</title>
     <!-- <link rel="stylesheet" href="main.css"> -->
-    <link rel="stylesheet" href="admindashboard.css">
+    <link rel="stylesheet" href="{% static 'admindashboard.css' %}">
     
 
+
 </head>
-
 <body>
-
-<!-- 
-<div class="nav">
-
-    <div class="logo">
-        <a href="main.html">
-            <img src="Picture/Untitled design.png" alt="logo">
-              <img src="Untitled design.png" alt="logo"> 
-        </a>
-    </div>
-
-<div class="search">
-    <form id="searchForm">
-        <label for="search_box">Search: </label>
-        <input id="search_box" type="search" name="search" placeholder="Title, author, category...">
-        <button type="submit">Search</button>
-    </form>
-</div>
-
-    <div class="links">
-        <ul>
-            <li><a href="add.html">Add book </a></li>
-            <li><a href="available_books_user.html">Browse Books</a></li>
-            <li><a href="borrowed%20books.html">My Borrowed Books</a></li>
-           
-            <li> <a href="main.html">Log out</a></li>
-        </ul>
-    </div>
-</div>  -->
-
- <header>
+    <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="AdminMain.html">
-                    <img src="Picture/ddfgd.png" alt="logo">
-                </a>
-            </div>  
+                <a href="/adminhome/">
 
+               <img src="{% static 'Picture/ddfgd.png' %}" alt="logo"> 
+
+  
+                </a>
+            </div>
             <div class="search">
                 <form action="" method="GET">
                     <input id="search_box" class="search-input" type="search" name="search" placeholder="Search books...">
                     <button type="submit">Search</button>
                 </form>
             </div>
+
             
             <div class="nav-links">
-                <a href="add.html">Add book</a>
-                <a href="admindashboard.html" class="active">Admin Dashboard</a>
-                <a href="available_book_admin.html">Browse Books</a>
-                <a href="MainPage.html">Log out</a>
+                <a href="/add/">Add book</a>
+                <a href="/admindashboard/" class="active">Admin Dashboard</a>
+                <a href="/available_book_admin/">Browse Books</a>
+                <a href="/login/">Log out</a> 
+
             </div>
-            
         </nav>
     </header>
 
-
-<h1>Admin Dashboard</h1>
-<p>
-This dashboard allows the administrator to manage the library system. 
-The admin can view all books, add new books, update existing book details, 
-and remove books from the library to keep the collection organized and up to date.
-</p>
-
-<br>
+    <h1>Admin Dashboard</h1>
+    <p>
+        This dashboard allows the administrator to manage the library system.
+        The admin can view all books, add new books, update existing book details,
+        and remove books from the library to keep the collection organized and up to date.
+    </p>
 
 <!-- Add Book Button -->
 <!-- <button id="addBook">Add Book</button> -->
@@ -95,14 +66,46 @@ and remove books from the library to keep the collection organized and up to dat
             <th>Language</th>
             <th>Actions</th>
         </tr>
-    </thead>
-    <tbody id="adminTableBody">
+</thead>
+
+<tbody id="adminTableBody">
+    {% for book in books %}
+   
+    <tr id="book-row-{{ book.id }}"> 
+        <td>{{ book.id }}</td>
+<td>
+    {% if book.cover %}
         
-    </tbody>
+        <img src="{{ book.cover.url }}" alt="cover" width="60" height="85" style="border-radius:4px; object-fit: cover;">
+    {% else %}
+   
+        <div style="width:60px; height:85px; background:#ddd; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:10px; color:#666;">No Cover</div>
+    {% endif %}
+</td>
+        <td><strong>{{ book.name }}</strong></td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.category }}</td>
+        {% comment %} <td>{{ book.release_date|date:"Y-m-d" }}</td> {% endcomment %}
+        <td>{{ book.release_date }}</td>
+        <td>{{ book.language }}</td>
+        <td>
+            
+            <button onclick="deleteBook('{{ book.id }}')" class="btn-delete">Delete</button>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="8" style="text-align:center;">No books found.</td>
+    </tr>
+    {% endfor %}
+</tbody>
 </table>
 
+
+    <script src="{% static 'admindashboard.js' %}" defer></script>
 </body>
 
-<script src="admindashboard.js" defer></script>
-
 </html>
+
+
+

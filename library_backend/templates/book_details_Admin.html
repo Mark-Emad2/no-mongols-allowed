@@ -1,146 +1,64 @@
-{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details</title>
-    <link rel="stylesheet" href="book-details.css">
+    <link rel="stylesheet" href="{% static 'book-details.css' %}">
 </head>
-
-<!-- ----------------------------------------------------------------------------------------- -->
-
 <body class="details-page">
-
-
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="AdminMain.html">
-                    <img src="Picture/ddfgd.png" alt="logo">
+                <a href="/adminhome/">
+                    <img src="{% static 'Picture/ddfgd.png' %}" alt="logo">
                 </a>
             </div>
-            
             <div class="nav-links">
-                <a href="add.html">Add book</a>
-                <a href="admindashboard.html">Admin Dashboard</a>
-                <a href="available_book_admin.html">Browse Books</a>
-                <a href="Login2.html">Log out</a>
-            </div>
-
-
+                <a href="/add/">Add book</a>
+                <a href="/admindashboard/">Admin Dashboard</a>
+                <a href="/available_book_admin/">Browse Books</a>
+                <a href="/login/">Log out</a>
             </div>
         </nav>
     </header>
 
-
-
     <div class="main-body">
-    <div class="left-section-of-body">
-        <div class="image-section">
-            <img src="" alt="cover" class="book-cover" id="bookCover">
-            
-            <a href="#" class="btn-buy" id="amazonLink" target="_blank">Buy from Amazon</a>
-            
-        </div>
-    </div>
-
-    <div class="right-section-of-body">
-        <div class="title-info">
-            <h1 class="book-title" id="bookTitle">Loading...</h1>
-            <span>By: </span><a href="#" target="_blank" class="author-link" id="authorName">Loading...</a>
-            
-        </div> 
-        
-        <div class="Description">
-            <h3>Description:</h3>
-            <p id="bookDesc">Loading description...</p>
-        </div>
-
-        <div class="info-group">
-            <div class="info-row">
-                <h3 class="label">Release Date : </h3>
-                <p class="value" id="releaseDate">-</p>
-            </div>
-            <div class="info-row">
-                <h3 class="label">Written language : </h3>
-                <p class="value" id="bookLang">-</p>
+        <div class="left-section-of-body">
+            <div class="image-section">
+                <img src="" alt="cover" class="book-cover" id="bookCover">
+                <a href="#" class="btn-buy" id="amazonLink" target="_blank">Buy from Amazon</a>
             </div>
         </div>
 
-        <div class="category">
-            <h3>Categories:</h3>
-            <div class="category-list" id="categoryList">
+        <div class="right-section-of-body">
+            <div class="title-info">
+                <h1 class="book-title" id="bookTitle">Loading...</h1>
+                <span>By: </span><a href="#" target="_blank" class="author-link" id="authorName">Loading...</a>
+            </div>
+            <div class="Description">
+                <h3>Description:</h3>
+                <p id="bookDesc">Loading description...</p>
+            </div>
+            <div class="info-group">
+                <div class="info-row">
+                    <h3 class="label">Release Date:</h3>
+                    <p class="value" id="releaseDate">-</p>
                 </div>
-        </div>
-    </div>
-</div>
-
-    <div class="container">
-
-        <div class="footer">
-
-            <div class="social">
-                <div class="card">
-
-                    <a href="https://www.facebook.com/share/1NTinaAZPG/" target="_blank">
-                        <img src="Picture/Face.webp" alt="Facebook Link">
-                    </a>
-                </div>
-                <div class="card">
-
-                    <a href="#" target="_blank">
-                        <img src="Picture/Instgram.webp" alt="Instagram Link">
-                    </a>
-                </div>
-                <div class="card">
-
-                    <a href="https://wa.me/201146310227" target="_blank">
-                        <img src="Picture/what'sapp.png" alt=" What's app  Link">
-                    </a>
+                <div class="info-row">
+                    <h3 class="label">Written language:</h3>
+                    <p class="value" id="bookLang">-</p>
                 </div>
             </div>
-            <div class="rights">
-                <p>
-                    Za3bola Reads is optimized for learning and training. Examples might be simplified to improve
-                    reading and learning.
-                    Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant
-                    full correctness
-                    of all content.
-                    <br />While using Za3bola Reads, you agree to have read and accepted our terms of use, cookies and
-                    privacy policy.
-                </p>
-                <h5>
-                    Copyright 1901-2090 by Refsnes Data. All Rights Reserved. Za3bola Reads is Powered by A.4M.k.
-                </h5>
+            <div class="category">
+                <h3>Categories:</h3>
+                <div class="category-list" id="categoryList"></div>
             </div>
         </div>
     </div>
 
-<script src="book_details.js"></script>
-    
-    
-
-
-    
-
-
-    <!-- <div class="bottom-of-body">
-        <div class="suggestion-bar">
-            <div class="suggested-card">
-                <div class="suggested-card-image">
-
-                </div>
-                <div class="suggested-card-info">
-
-                </div>
-            </div>
-
-        </div>
-
-
-    </div> -->
-
-
+    {% include "footer.html" %}
+    <script src="{% static 'book_details.js' %}"></script>
 </body>
 </html>
