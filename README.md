@@ -27,3 +27,20 @@
 - **Frontend:** JavaScript (ES6+), HTML5, CSS3
 - **Database:** SQLite (Relational storage for users, books, and loan records)
 - **Authentication:** JSON Web Tokens (JWT) & Django Auth Mechanics
+
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Python 3.10+**
+- **pip** (Python Package Installer)
+- **virtualenv** (recommended)
+
+### Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone 
