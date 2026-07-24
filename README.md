@@ -43,4 +43,4 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone 
+   git clone https://github.com/Mark-Emad2/no-mongols-allowed.git
